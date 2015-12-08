@@ -1,0 +1,13 @@
+<ion-view view-title="Camera">
+  <ion-content padding="true">
+	  <button ng-click="takePicture()" class="button button-block button-primary">Take Photo</button>
+
+	  <!-- <img ng-src="{{lastPhoto}}" style="max-width: 100%"> -->
+		
+		<div ng-show="working" style="margin: 0 auto; width: 100px;">
+    		<ion-spinner></ion-spinner>
+    		<p>{{ working }}</p>
+		</div>
+	  
+  </ion-content>
+</ion-view>
