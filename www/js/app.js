@@ -15,6 +15,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -60,9 +61,14 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     views: {
       'menuContent': {
         templateUrl: 'templates/clear.html',
-        controller: 'ClearCtrl'
+        controller: 'ClearCtrl',
       }
-    }
+    },
+    // resolve: {
+    //   uuid: function(UuidService) {
+    //     return UuidService.getUuid()
+    //   }
+    // }
   })
 
   .state('app.search', {

@@ -91,52 +91,83 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
-.controller('ClearCtrl', function($scope, $http, $localstorage) {
+.controller('ClearCtrl', function($scope, $http, $localstorage, $cordovaDevice, RegisterUser) {
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    
+
+    function onDeviceReady() {
+
+    // Now safe to use device APIs  
+      $scope.uuid = $cordovaDevice.getUUID();
+      var saveToken = function (response) {
+        console.log('getting success callback!');
+        console.log(response);
+      }
+      RegisterUser.getToken().then(saveToken);
+      
+    };
+
+
   userId = $localstorage.get('userId')
-  $scope.clear = $http({
-  method: 'DELETE',
-  url: 'https://keep-backend.herokuapp.com/ocr?user_id='+userId
-}).then(function successCallback(response) {
-  alert('schedule cleared');
-    // this callback will be called asynchronously
-    // when the response is available
-  }, function errorCallback(response) {
-    alert('something went wrong');
-    // called asynchronously if an error occurs
-    // or server returns response with an error status.
-  });
+//   $scope.clear = $http({
+//   method: 'DELETE',
+//   url: 'https://keep-backend.herokuapp.com/ocr?user_id='+userId
+// }).then(function successCallback(response) {
+//   alert('schedule cleared');
+//     // this callback will be called asynchronously
+//     // when the response is available
+//   }, function errorCallback(response) {
+//     alert('something went wrong');
+//     // called asynchronously if an error occurs
+//     // or server returns response with an error status.
+//   });
 
 
 
 })
 
 
-.controller('IntroCtrl', function($scope, $cordovaInAppBrowser, $localstorage, $http) {
+.controller('IntroCtrl', function($scope, $cordovaInAppBrowser, $localstorage, $http, $cordovaDevice, RegisterUser) {
   $scope.prototypeLink = function()
     {
      // Open in external browser
      window.open('https://www.flinto.com/p/6fc91ba2','_system'); 
     };
 
-    var getUserId = function() {
-      console.log('starting registering')
-      var req = {
-       method: 'POST',
-       url: 'https://keep-backend.herokuapp.com/users',
-       headers: {
-         'Accept': 'application/vnd.keepup.v1'
-       },
-      }
-      
-      $http(req)
-        .then(function(response){
-        $localstorage.set('userId', response.data.user.id);
-        console.log($localstorage.get('userId'));
-        }, function(data){
-        alert('something went wrong: ' + data);
-      });
+    document.addEventListener("deviceready", onDeviceReady, false);
 
+    function onDeviceReady() {
+      
+      var uuid = $cordovaDevice.getUUID()
+      var saveToken = function (response) {
+        console.log(response)
+      }
+      RegisterUser.getToken().then(saveToken)
+    // Now safe to use device APIs
     };
+
+    // var getUserId = function() {
+    //   console.log('starting registering')
+    //   var req = {
+    //    method: 'POST',
+    //    url: 'https://keep-backend.herokuapp.com/users',
+    //    headers: {
+    //      'Accept': 'application/vnd.keepup.v1'
+    //    },
+    //   }
+      
+    //   $http(req)
+    //     .then(function(response){
+    //     $localstorage.set('userId', response.data.user.id);
+    //     console.log($localstorage.get('userId'));
+    //     }, function(data){
+    //     alert('something went wrong: ' + data);
+    //   });
+
+    // };
+
     $scope.$on('$ionicView.afterEnter', function(object, info) {
       if (! localStorage.getItem('userId') && info.title == "Onboard") {
         getUserId();

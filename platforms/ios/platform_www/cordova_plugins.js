@@ -214,6 +214,14 @@ module.exports = [
         "clobbers": [
             "window.FileTransfer"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
+        "pluginId": "cordova-plugin-device",
+        "clobbers": [
+            "device"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -221,7 +229,8 @@ module.exports.metadata =
 {
     "cordova-plugin-camera": "1.2.0",
     "cordova-plugin-file": "3.0.0",
-    "cordova-plugin-file-transfer": "1.4.0"
+    "cordova-plugin-file-transfer": "1.4.0",
+    "cordova-plugin-device": "1.1.0"
 }
 // BOTTOM OF METADATA
 });

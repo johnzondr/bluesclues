@@ -1,0 +1,24 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        }
+    },
+    "dependent_plugins": {}
+}

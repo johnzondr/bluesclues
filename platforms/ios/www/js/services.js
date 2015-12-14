@@ -19,6 +19,4 @@ angular.module('keepup.services', [])
   }
 }])
 
-
-
 ;

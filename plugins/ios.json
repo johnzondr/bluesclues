@@ -12,6 +12,9 @@
         },
         "cordova-plugin-file-transfer": {
             "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
         }
     },
     "dependent_plugins": {
