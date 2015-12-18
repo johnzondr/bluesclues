@@ -44,9 +44,7 @@ angular.module('keepup.controllers', [])
 .controller('CoursesCtrl', function($scope, $http, $localstorage, $state) {
 
   $scope.$on('$ionicView.afterEnter', function(object, info) {
-    // if (! localStorage.getItem('userId') && info.title == "Onboard") {
-    //   getUserId();
-    // }
+
     switch (new Date().getDay()) {
         case 2:
             $state.go('app.courses.day', {'day':2})
@@ -64,27 +62,6 @@ angular.module('keepup.controllers', [])
             $state.go('app.courses.day', {'day':1});
     }
   });
-
-
-
-  // var d = new Date();
-  // $scope.n = d.getDay();
-
-  // $scope.getSchedule = function(day) {
-    
-  //     $http({
-  //     method: 'GET',
-  //     url: 'https://keep-backend.herokuapp.com/schedules',
-  //     headers: {'Accept': 'application/vnd.keepup.v1'},
-  //     params: {user_id: userId, day: day }
-  //     }).then(function(response){
-  //       $scope.courses = response.data.schedule;
-  //       console.log($scope.courses)
-  //     }), function(response){
-  //       console.log(response);
-  //     }
-  //     ;
-  // }
 
 
   //update button bars with correct state
@@ -199,7 +176,7 @@ angular.module('keepup.controllers', [])
       $localstorage.set('token', response.data.token)
     }
 
-    RegisterUser.getToken().then(saveToken);
+    RegisterUser.getToken($scope.uuid).then(saveToken);
     
   };
 
