@@ -124,16 +124,6 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       // controller: 'TodoCtrl',
     })
 
-    .state('app.courses.monday', {
-      url: '/monday',
-      views: {
-        'courseDay': {
-          templateUrl: 'templates/monday.html',
-          // controller: 'CoursesCtrl'
-        }
-      }
-    })
-
 
   // .state('app.single', {
   //   url: '/courses/:courseId',

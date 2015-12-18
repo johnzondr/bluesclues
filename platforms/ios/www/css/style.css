@@ -1,1 +1,38 @@
 /* Empty. Add your own CSS if you like */
+
+.wrapper {
+	background-color: #2ECC71;
+	height: 100%;
+
+}
+
+.onboard {
+	height: 100%;
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.onboard1 {
+	background-image: url("../img/onboard/1.png");
+}
+
+.onboard2 {
+	background-image: url("../img/onboard/2.png");
+}
+
+.onboard3 {
+	background-image: url("../img/onboard/3.png");
+}
+
+.onboard4 {
+	background-image: url("../img/onboard/4.png");
+}
+
+.onboard5 {
+	background-image: url("../img/onboard/5.png");
+}
+
+.ion-slide {
+	height: 100%;
+}

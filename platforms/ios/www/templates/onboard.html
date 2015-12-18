@@ -1,30 +1,42 @@
 <ion-view view-title="Onboard">
-  <ion-content padding="true">
-<!-- 	<ion-slide-box on-slide-changed="slideHasChanged($index)">
+  <ion-pane padding="true">
+	<div class="wrapper">
+		<ion-slide-box on-slide-changed="slideHasChanged($index)" ng-style="{'height': wheight + 'px'}">
 
-	  <ion-slide>
-	    <div class="box blue"><h1>BLUE</h1></div>
-	  </ion-slide>
+<!-- 		  <ion-slide>
+		    <div class="onboard"></div>
+		  </ion-slide> -->
 
-	  <ion-slide>
-	    <div class="box yellow"><h1>YELLOW</h1></div>
-	  </ion-slide>
+		  <ion-slide>
+		    <div class="onboard onboard1"></div>
+		  </ion-slide>
 
-	  <ion-slide>
-	    <div class="box pink"><h1>PINK</h1></div>
-	  </ion-slide>
+		  <ion-slide>
+		    <div class="onboard onboard2"></div>
+		  </ion-slide>
 
-	</ion-slide-box> -->
-	<br>
+		  <ion-slide>
+		    <div class="onboard onboard3"></div>
+		  </ion-slide>
 
-	<h3>Hey, thanks for beta testing Keep Up</h3>
+		  <ion-slide>
+		    <div class="onboard onboard4"></div>
+		  </ion-slide>
+
+		  <ion-slide><a ui-sref="app.camera">
+		    <div class="onboard onboard5"></div></a>
+		  </ion-slide>
+
+		</ion-slide-box>
+	</div>
+<!-- 	<h3>Hey, thanks for beta testing Keep Up</h3>
 	<p>Everything is still very rough. If you want to see how the app will look like on release, check out a prototype below.</p>
 	<button ng-click="prototypeLink()" class="button button-block button-primary">Prototype</button>
 
 	<p>To use the app, first take a picture of your schedule. The app will recognize the CRN for each course</p>
 	<a ui-sref="app.camera">
 		<button class="button button-block button-primary">Next</button>
-	</a>
+	</a> -->
 	
-  </ion-content>
+  </ion-pane>
 </ion-view>
