@@ -1,4 +1,12 @@
 {
   "name": "keepup",
-  "app_id": "17e58bd2"
+  "app_id": "17e58bd2",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
 }

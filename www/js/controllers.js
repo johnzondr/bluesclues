@@ -131,13 +131,15 @@ angular.module('keepup.controllers', [])
 })
 
 
-.controller('IntroCtrl', function($scope, $cordovaInAppBrowser) {
+.controller('IntroCtrl', function($scope, $cordovaInAppBrowser, $window) {
   console.log('triggering onboard controller');
   $scope.prototypeLink = function()
     {
      // Open in external browser
      window.open('https://www.flinto.com/p/6fc91ba2','_system'); 
     };
+
+  $scope.wheight = $window.innerHeight;
 
 })
 
