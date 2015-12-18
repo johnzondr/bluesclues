@@ -41,43 +41,51 @@ angular.module('keepup.controllers', [])
   };
 })
 
-.controller('CoursesCtrl', function($scope, $http, $localstorage) {
-  var userId = $localstorage.get('userId');
-  console.log(userId);
+.controller('CoursesCtrl', function($scope, $http, $localstorage, $state) {
+  // var userId = $localstorage.get('userId');
+  // console.log(userId);
 
-  var d = new Date();
-  $scope.n = d.getDay();
+  // var d = new Date();
+  // $scope.n = d.getDay();
 
-  String.prototype.toHHMMSS = function () {
-    var sec_num = parseInt(this, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+  // String.prototype.toHHMMSS = function () {
+  //   var sec_num = parseInt(this, 10); // don't forget the second param
+  //   var hours   = Math.floor(sec_num / 3600);
+  //   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+  //   var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours+':'+minutes;
-    return time;
-  }
+  //   if (hours   < 10) {hours   = "0"+hours;}
+  //   if (minutes < 10) {minutes = "0"+minutes;}
+  //   if (seconds < 10) {seconds = "0"+seconds;}
+  //   var time    = hours+':'+minutes;
+  //   return time;
+  // }
 
-  $scope.getSchedule = function(day) {
+  // $scope.getSchedule = function(day) {
     
-      $http({
-      method: 'GET',
-      url: 'https://keep-backend.herokuapp.com/schedules',
-      headers: {'Accept': 'application/vnd.keepup.v1'},
-      params: {user_id: userId, day: day }
-      }).then(function(response){
-        $scope.courses = response.data.schedule;
-        console.log($scope.courses)
-      }), function(response){
-        console.log(response);
-      }
-      ;
-  }
+  //     $http({
+  //     method: 'GET',
+  //     url: 'https://keep-backend.herokuapp.com/schedules',
+  //     headers: {'Accept': 'application/vnd.keepup.v1'},
+  //     params: {user_id: userId, day: day }
+  //     }).then(function(response){
+  //       $scope.courses = response.data.schedule;
+  //       console.log($scope.courses)
+  //     }), function(response){
+  //       console.log(response);
+  //     }
+  //     ;
+  // }
 
-  $scope.getSchedule($scope.n);
+  // $scope.getSchedule($scope.n);
+
+
+  $scope.$watch(function(){
+    return $state.params;
+  }, function(params){
+    $scope.day = params.day;
+  });
+
 
   // $scope.courses = [
   //   { title: 'Accounting 201', id: 1 },
@@ -88,30 +96,21 @@ angular.module('keepup.controllers', [])
   // ];
 })
 
+
+.controller('CourseDayCtrl', function($scope, $stateParams) {
+  $scope.day = $stateParams.day
+  $scope.courses = courses
+
+
+
+})
+
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
-.controller('ClearCtrl', function($scope, $http, $localstorage, $cordovaDevice, RegisterUser) {
-
-    document.addEventListener("deviceready", onDeviceReady, false);
-
-    
-
-    function onDeviceReady() {
-
-    // Now safe to use device APIs  
-      $scope.uuid = $cordovaDevice.getUUID();
-      var saveToken = function (response) {
-        console.log('getting success callback!');
-        console.log(response);
-      }
-      RegisterUser.getToken().then(saveToken);
-      $scope.speak = RegisterUser.speak();
-      console.log($scope.speak);
-    };
+.controller('ClearCtrl', function($scope, $http, $localstorage) {
 
 
-  userId = $localstorage.get('userId')
 //   $scope.clear = $http({
 //   method: 'DELETE',
 //   url: 'https://keep-backend.herokuapp.com/ocr?user_id='+userId
@@ -130,143 +129,65 @@ angular.module('keepup.controllers', [])
 })
 
 
-.controller('IntroCtrl', function($scope, $cordovaInAppBrowser, $localstorage, $http, $cordovaDevice, RegisterUser) {
+.controller('IntroCtrl', function($scope, $cordovaInAppBrowser) {
+  console.log('triggering onboard controller');
   $scope.prototypeLink = function()
     {
      // Open in external browser
      window.open('https://www.flinto.com/p/6fc91ba2','_system'); 
     };
 
-    document.addEventListener("deviceready", onDeviceReady, false);
+    
 
-    function onDeviceReady() {
-      
-      var uuid = $cordovaDevice.getUUID()
-      var saveToken = function (response) {
-        console.log(response)
-      }
-      RegisterUser.getToken().then(saveToken)
-    // Now safe to use device APIs
-    };
-
-    // var getUserId = function() {
-    //   console.log('starting registering')
-    //   var req = {
-    //    method: 'POST',
-    //    url: 'https://keep-backend.herokuapp.com/users',
-    //    headers: {
-    //      'Accept': 'application/vnd.keepup.v1'
-    //    },
+    // $scope.$on('$ionicView.afterEnter', function(object, info) {
+    //   if (! localStorage.getItem('userId') && info.title == "Onboard") {
+    //     getUserId();
     //   }
-      
-    //   $http(req)
-    //     .then(function(response){
-    //     $localstorage.set('userId', response.data.user.id);
-    //     console.log($localstorage.get('userId'));
-    //     }, function(data){
-    //     alert('something went wrong: ' + data);
-    //   });
-
-    // };
-
-    $scope.$on('$ionicView.afterEnter', function(object, info) {
-      if (! localStorage.getItem('userId') && info.title == "Onboard") {
-        getUserId();
-      }
-    });
+    // });
 })
 
-.controller('CameraCtrl', function($scope, $cordovaCamera, $cordovaFileTransfer, $http, $localstorage) {
+.controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser) {
 
-    $scope.send = function(taskId) {
-      userId = $localstorage.get('userId')
-      console.log(taskId)
-      $scope.working = 'analyzing'
-      var req = {
-       method: 'POST',
-       url: 'https://keep-backend.herokuapp.com/ocr?user_id='+userId+'&task_id='+taskId,
-       headers: {
-         'Accept': 'application/vnd.keepup.v1'
-       },
-      }
-      
-      $http(req)
-        .then(function(response){
-          // course list
-        console.log(response.data);
-        alert(response.data.courses);
+  var token = $localstorage.get('token');
+  console.log('token  ' +token);
+
+  $scope.takePicture = function () {
+    return Ocr
+      .takePicture()
+      .then( function(ImageUri) {
+        $scope.working = "uploading image"
+        return Ocr.postOcr(ImageUri)
+      })
+      .then( function(taskId) {
+        $scope.working = "analyzing image"
+        console.log('task id ' +taskId);
+        return Ocr.parseTask(taskId)
+      })
+      .then ( function(response){
         $scope.working = false;
-      }, function(data){
-        alert('something went wrong: ' + data);
-        $scope.working = false;
+        alert(response);
       });
-    };
-  
-  $scope.working = false;
-  
-  $scope.postOcr = function() {
-    console.log('posting to ocr')
-    $scope.working = 'uploading image';
-    console.log($scope.working);
-    
-    // Destination URL 
-    var url = "https://cloud.ocrsdk.com/processImage?exportFormat=txt";
-     
-    //File for Upload
-    // var targetPath = "/img/camera.JPG"
-     
-    // File name only
-    // var filename = targetPath.split("/").pop();
-     
-    var options = {
-         fileKey: "file",
-         chunkedMode: false,
-         headers: {
-          'Content-Type': undefined,
-          'Authorization': 'Basic S2VlcCBVcCBBcHA6R293MVVLcW1XL0FNSXRkZ0Q0SWhHMTVJIA=='
-          },
-     };
 
-     var parse_task = function(result) {
-      var x2js = new X2JS();
-      var task_id = x2js.xml_str2json(result).response.task._id;
-      return task_id;
-     };
-          
-     $cordovaFileTransfer.upload(url, $scope.lastPhoto, options).then(function (result) {
-         // var xmlDoc = result.response;
-         task_id = parse_task(result.response);
-         $scope.send(task_id);
-     }, function (err) {
-         console.log("ERROR: " + JSON.stringify(err));
-     }, function (progress) {
-         // PROGRESS HANDLING GOES HERE
-     });
-  };
-  // 
+  }
 
+    //register user and get user token
+  document.addEventListener("deviceready", onDeviceReady, false);
 
+  function onDeviceReady() {
+    console.log('triggering event device ready');
+  // Now safe to use device APIs  
+    $scope.uuid = $cordovaDevice.getUUID();
+    console.log($scope.uuid);
 
-
-
-  $scope.takePicture = function() {
-
-        var options = { 
-            quality : 50, 
-            encodingType: 1,
-            targetWidth: 800,
-            targetHeight: 500,
-            saveToPhotoAlbum: true
-        };
-
-        $cordovaCamera.getPicture(options).then(function(imageData) {
-            $scope.lastPhoto = imageData;
-            $scope.postOcr();
-        }, function(err) {
-            // An error occured. Show a message to the user
-        });
+    var saveToken = function (response) {
+      console.log('getting success callback for user token!');
+      console.log(response);
+      $localstorage.set('token', response.data.token)
     }
 
+    RegisterUser.getToken().then(saveToken);
+    
+  };
 
 
 })
