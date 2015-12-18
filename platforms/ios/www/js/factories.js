@@ -3,7 +3,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 .factory('Schedule', function($http, $localstorage) {
   return  {
   	getDay: function(day) {
-		$scope.getSchedule = function(day) {
+  		console.log('attemping to get schedule for ' + day)
 	    token = $localstorage.get('token');
 	    return $http({
 	    	method: 'GET',
@@ -11,7 +11,6 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token, day: day }
 	    	})
-		}
   	}
   };
 })

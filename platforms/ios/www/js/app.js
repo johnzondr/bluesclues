@@ -111,11 +111,13 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
         'courseDay': {
           templateUrl: 'templates/courseday.html',
           controller: 'CourseDayCtrl',
-          // resolve: {
-          //   courses: function($stateParams, Schedule) {
-          //     return Schedule.getDay($stateParams.day)
-          //   }
-          // }
+          resolve: {
+            courses: function($stateParams, Schedule) {
+              return Schedule.getDay($stateParams.day).then(function(response){
+                return response.data.schedule
+              })
+            }
+          }
         }
       }
       

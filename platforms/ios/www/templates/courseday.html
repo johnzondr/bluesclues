@@ -1,11 +1,5 @@
-hello {{ day }}
-<ion-list>
-      <ion-item ng-repeat="course in courses" href="#/app/courses/{{course.id}}">
-        {{course.title}}
-      </ion-item>
-</ion-list>
-
-	<!-- <div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
+<ion-content class="has-subheader">
+	<div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
 		<div class="item item-divider">
     		{{course.start_time.toString().toHHMMSS()}}
   		</div>
@@ -17,4 +11,5 @@ hello {{ day }}
 		<div class="item item-divider">
 			{{course.room}} {{course.building}}
 		</div>
-	</div> -->
+	</div>
+</ion-content>

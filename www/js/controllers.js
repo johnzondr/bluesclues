@@ -42,24 +42,33 @@ angular.module('keepup.controllers', [])
 })
 
 .controller('CoursesCtrl', function($scope, $http, $localstorage, $state) {
-  // var userId = $localstorage.get('userId');
-  // console.log(userId);
+
+  $scope.$on('$ionicView.afterEnter', function(object, info) {
+    // if (! localStorage.getItem('userId') && info.title == "Onboard") {
+    //   getUserId();
+    // }
+    switch (new Date().getDay()) {
+        case 2:
+            $state.go('app.courses.day', {'day':2})
+            break;
+        case 3:
+            $state.go('app.courses.day', {'day':3})
+            break;
+        case 4:
+            $state.go('app.courses.day', {'day':4})
+            break;
+        case 5:
+            $state.go('app.courses.day', {'day':5})
+            break;
+        default:
+            $state.go('app.courses.day', {'day':1});
+    }
+  });
+
+
 
   // var d = new Date();
   // $scope.n = d.getDay();
-
-  // String.prototype.toHHMMSS = function () {
-  //   var sec_num = parseInt(this, 10); // don't forget the second param
-  //   var hours   = Math.floor(sec_num / 3600);
-  //   var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-  //   var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-  //   if (hours   < 10) {hours   = "0"+hours;}
-  //   if (minutes < 10) {minutes = "0"+minutes;}
-  //   if (seconds < 10) {seconds = "0"+seconds;}
-  //   var time    = hours+':'+minutes;
-  //   return time;
-  // }
 
   // $scope.getSchedule = function(day) {
     
@@ -77,9 +86,8 @@ angular.module('keepup.controllers', [])
   //     ;
   // }
 
-  // $scope.getSchedule($scope.n);
 
-
+  //update button bars with correct state
   $scope.$watch(function(){
     return $state.params;
   }, function(params){
@@ -97,10 +105,23 @@ angular.module('keepup.controllers', [])
 })
 
 
-.controller('CourseDayCtrl', function($scope, $stateParams) {
+.controller('CourseDayCtrl', function($scope, $stateParams, courses) {
   $scope.day = $stateParams.day
+  console.log(courses)
   $scope.courses = courses
 
+  String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var time    = hours+':'+minutes;
+    return time;
+  }
 
 
 })
@@ -137,13 +158,6 @@ angular.module('keepup.controllers', [])
      window.open('https://www.flinto.com/p/6fc91ba2','_system'); 
     };
 
-    
-
-    // $scope.$on('$ionicView.afterEnter', function(object, info) {
-    //   if (! localStorage.getItem('userId') && info.title == "Onboard") {
-    //     getUserId();
-    //   }
-    // });
 })
 
 .controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser) {
