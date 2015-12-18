@@ -82,7 +82,7 @@ angular.module('keepup.controllers', [])
 })
 
 
-.controller('CourseDayCtrl', function($scope, $stateParams, courses) {
+.controller('CourseDayCtrl', function($scope, $stateParams, $cordovaInAppBrowser, courses) {
   $scope.day = $stateParams.day
   console.log(courses)
   $scope.courses = courses
@@ -98,6 +98,10 @@ angular.module('keepup.controllers', [])
     if (seconds < 10) {seconds = "0"+seconds;}
     var time    = hours+':'+minutes;
     return time;
+  }
+
+  $scope.directions = function(location){
+    cordova.InAppBrowser.open("http://maps.apple.com/?saddr=Current%20Location&daddr=Everitt Elec & Comp Engr Lab, 61820", '_blank', 'location=yes');
   }
 
 
