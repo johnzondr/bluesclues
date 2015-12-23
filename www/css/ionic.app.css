@@ -9089,12 +9089,31 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-#side-menu list {
-  margin-top: 50px; }
+#sidemenu {
+  background-color: #4A4A4A; }
+  #sidemenu .list {
+    margin-top: 50px; }
+    #sidemenu .list ion-item {
+      background-color: transparent;
+      border-style: none; }
+      #sidemenu .list ion-item img {
+        margin-right: 4px; }
+      #sidemenu .list ion-item a {
+        background-color: transparent;
+        color: white;
+        font-weight: 200;
+        font-size: 22px;
+        letter-spacing: 2px; }
 
 #schedule ion-content {
   background-color: #ECF0F1;
   top: 128px; }
+
+#schedule .list {
+  margin-top: 20px; }
+  #schedule .list ion-item {
+    padding: 0;
+    margin: 8px 0; }
 
 #courses-day-selector {
   top: 84px;
@@ -9115,3 +9134,19 @@ a.button {
   .classes_check p {
     margin-top: 15px;
     color: #95A5A6; }
+
+#course-item {
+  padding: 0; }
+  #course-item .info .start_time, #course-item .info .location {
+    font-size: 14px;
+    color: #95A5A6; }
+  #course-item .info .name {
+    letter-spacing: -0.5px;
+    font-size: 18px;
+    font-weight: 600;
+    word-wrap: break-word;
+    margin: 0px 0; }
+  #course-item .info .location {
+    margin-top: 3px; }
+  #course-item .navigate {
+    border-left: 1px solid #ECF0F1; }

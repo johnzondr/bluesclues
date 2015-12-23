@@ -37,10 +37,25 @@ $grey: #ECF0F1;
 }
 
 //side mineu
-#side-menu {
+#sidemenu {
+	background-color: #4A4A4A;
 
-	list {
+	.list {
 		margin-top: 50px;
+		ion-item {
+			background-color: transparent;
+			border-style: none;
+			img {
+				margin-right: 4px;
+			}
+			a {
+				background-color: transparent;
+				color: white;
+				font-weight: 200;
+				font-size: 22px;
+				letter-spacing: 2px;
+			}
+		}
 	}
 }
 
@@ -50,7 +65,17 @@ $grey: #ECF0F1;
 		background-color: $grey;
 		top: 128px;
 	}
+	// list of courses
+	.list { 
+		margin-top: 20px;
+		ion-item {
+			padding: 0;
+			margin: 8px 0;
+		}
+	}
 }
+
+// sub-header bar
 #courses-day-selector {
 	top: 84px;
 	padding: 0;
@@ -88,5 +113,35 @@ $grey: #ECF0F1;
 	p {
 		margin-top: 15px;
 		color: #95A5A6;
+	}
+}
+
+
+//course item
+#course-item {
+	padding: 0;
+	.info {
+		// background-color: blue;
+		.start_time {
+			font-size: 14px;
+			color: #95A5A6;
+
+		}
+		.name {
+			letter-spacing: -0.5px;
+			font-size: 18px;
+			font-weight: 600;
+			word-wrap: break-word;
+			margin: 0px 0;
+		}
+
+		.location {
+			@extend .start_time;
+			margin-top: 3px;
+		}
+
+	}
+	.navigate {
+		border-left: 1px solid #ECF0F1;
 	}
 }
