@@ -13,6 +13,13 @@
     background-size: contain;
 }
 
+.onboard-loading {
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("../img/onboard/1.png");
+}
+
 .onboard1 {
 	background-image: url("../img/onboard/1.png");
 }
@@ -35,4 +42,12 @@
 
 .ion-slide {
 	height: 100%;
+}
+
+.camera {
+	background-color: #2ECC71;
+}
+
+.camera-working img {
+	width: 100%;
 }

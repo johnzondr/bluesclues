@@ -20,3 +20,66 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+
+
+$green: #2ECC71;
+$grey: #ECF0F1;
+
+// core css
+
+#main-header-bar {
+	.bar {
+		// padding: 20px 0;
+	}
+	// ion-header-bar {
+	// 	// padding: 20px 0;
+	// }
+}
+
+
+// main courses view
+#schedule {
+	ion-content {
+		background-color: $grey;
+		top: 128px;
+	}
+}
+#courses-day-selector {
+	top: 84px;
+	padding: 0;
+	height: auto;
+	.button-bar {
+		// padding-top: px;
+
+		// height: 100%;
+	}
+	a.button {
+		// background-color: $green;
+		padding: 10px 0;
+		font-weight: 700;
+		font-size: 13px;
+		background-color:white;
+		border: none;
+		box-shadow: none;
+		&.active {
+			// background-color: $green;
+			border-bottom: 4px solid $green;
+		}
+	}
+	// background-color: $green;
+}
+
+
+// schedule course day view
+
+.classes_check {
+	padding: 20px 0;
+	
+	div {
+		
+	}
+	p {
+		margin-top: 15px;
+		color: #95A5A6;
+	}
+}

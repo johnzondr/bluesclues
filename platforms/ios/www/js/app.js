@@ -27,7 +27,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
   
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
-  var defaultRoute = "/intro/onboard";
+  var defaultRoute = "/intro/loading";
     if (localStorage.getItem('token')) {
         console.log('wizard has been run - skip!');
         defaultRoute = '/app/courses';
@@ -41,6 +41,12 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
         abstract: true,
         template: '<ion-nav-view></ion-nav-view>',
         // controller: 'IntroCtrl'
+    })
+
+    .state('intro.loading', {
+      url: '/loading',
+      templateUrl: 'templates/loading.html',
+      controller: 'OnboardLoadingCtrl'
     })
 
     .state('intro.onboard', {
@@ -86,6 +92,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     })
 
     .state('app.camera', {
+      cache: false,
       url: '/camera',
       views: {
         'menuContent': {

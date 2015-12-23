@@ -72,13 +72,13 @@ angular.module('keepup.controllers', [])
   });
 
 
-  // $scope.courses = [
-  //   { title: 'Accounting 201', id: 1 },
-  //   { title: 'Business 101', id: 2 },
-  //   { title: 'Engineering 185', id: 3 },
-  //   { title: 'Art 300', id: 4 },
-  //   { title: 'History 125', id: 5 },
-  // ];
+  $scope.courses = [
+    { title: 'Accounting 201', id: 1 },
+    { title: 'Business 101', id: 2 },
+    { title: 'Engineering 185', id: 3 },
+    { title: 'Art 300', id: 4 },
+    { title: 'History 125', id: 5 },
+  ];
 })
 
 
@@ -130,6 +130,9 @@ angular.module('keepup.controllers', [])
 
 })
 
+.controller('OnboardLoadingCtrl', function($timeout, $state) {
+$timeout($state.go('intro.onboard'), 2000);
+})
 
 .controller('IntroCtrl', function($scope, $cordovaInAppBrowser, $window) {
   console.log('triggering onboard controller');
@@ -139,35 +142,43 @@ angular.module('keepup.controllers', [])
      window.open('https://www.flinto.com/p/6fc91ba2','_system'); 
     };
 
+  
   $scope.wheight = $window.innerHeight;
 
 })
 
-.controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser) {
+
+
+.controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser, $timeout, $state) {
 
   var token = $localstorage.get('token');
   console.log('token  ' +token);
 
-  $scope.takePicture = function () {
+
+  takePicture = function () {
     return Ocr
       .takePicture()
       .then( function(ImageUri) {
-        $scope.working = "uploading image"
+        $scope.working = "uploading"
         return Ocr.postOcr(ImageUri)
       })
       .then( function(taskId) {
-        $scope.working = "analyzing image"
+        $scope.working = "analyzing"
         console.log('task id ' +taskId);
         return Ocr.parseTask(taskId)
       })
       .then ( function(response){
-        $scope.working = false;
-        alert(response);
+        $scope.working = "success";
+        $timeout(function(){
+          return $state.go('app.courses')
+        }, 2500);
       });
 
   }
 
-    //register user and get user token
+  takePicture();
+
+    // register user and get user token
   document.addEventListener("deviceready", onDeviceReady, false);
 
   function onDeviceReady() {

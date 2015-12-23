@@ -15,6 +15,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
@@ -26,8 +27,8 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
   
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
-  var defaultRoute = "/intro/onboard";
-    if (localStorage.getItem('userId')) {
+  var defaultRoute = "/intro/loading";
+    if (localStorage.getItem('token')) {
         console.log('wizard has been run - skip!');
         defaultRoute = '/app/courses';
     }
@@ -39,12 +40,19 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
         url: '/intro',
         abstract: true,
         template: '<ion-nav-view></ion-nav-view>',
-        controller: 'IntroCtrl'
+        // controller: 'IntroCtrl'
+    })
+
+    .state('intro.loading', {
+      url: '/loading',
+      templateUrl: 'templates/loading.html',
+      controller: 'OnboardLoadingCtrl'
     })
 
     .state('intro.onboard', {
       url: '/onboard',
       templateUrl: 'templates/onboard.html',
+      controller: 'IntroCtrl'
     })
 
     .state('app', {
@@ -60,9 +68,9 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     views: {
       'menuContent': {
         templateUrl: 'templates/clear.html',
-        controller: 'ClearCtrl'
+        controller: 'ClearCtrl',
       }
-    }
+    },
   })
 
   .state('app.search', {
@@ -84,6 +92,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     })
 
     .state('app.camera', {
+      cache: false,
       url: '/camera',
       views: {
         'menuContent': {
@@ -103,15 +112,35 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       }
     })
 
-  .state('app.single', {
-    url: '/courses/:courseId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/course.html',
-        controller: 'CourseCtrl'
+    .state('app.courses.day', {
+      url: '/:day',
+      views: {
+        'courseDay': {
+          templateUrl: 'templates/courseday.html',
+          controller: 'CourseDayCtrl',
+          resolve: {
+            courses: function($stateParams, Schedule) {
+              return Schedule.getDay($stateParams.day).then(function(response){
+                return response.data.schedule
+              })
+            }
+          }
+        }
       }
-    }
-  });
+      
+      // controller: 'TodoCtrl',
+    })
+
+
+  // .state('app.single', {
+  //   url: '/courses/:courseId',
+  //   views: {
+  //     'menuContent': {
+  //       templateUrl: 'templates/course.html',
+  //       controller: 'CourseCtrl'
+  //     }
+  //   }
+  // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise(defaultRoute);
 });

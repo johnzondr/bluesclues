@@ -9088,3 +9088,27 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+#schedule ion-content {
+  background-color: #ECF0F1;
+  top: 128px; }
+
+#courses-day-selector {
+  top: 84px;
+  padding: 0;
+  height: auto; }
+  #courses-day-selector a.button {
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 13px;
+    background-color: white;
+    border: none;
+    box-shadow: none; }
+    #courses-day-selector a.button.active {
+      border-bottom: 4px solid #2ECC71; }
+
+.classes_check {
+  padding: 20px 0; }
+  .classes_check p {
+    margin-top: 15px;
+    color: #95A5A6; }

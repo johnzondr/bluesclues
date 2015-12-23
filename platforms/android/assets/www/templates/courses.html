@@ -1,34 +1,15 @@
 <ion-view view-title="My Schedule">
   <div class="bar bar-subheader">
 		<div class="button-bar">
-			<a class="button" ng-click="getSchedule('1')">Mon</a>
-			<a class="button" ng-click="getSchedule('2')">Tues</a>
-			<a class="button" ng-click="getSchedule('3')">Wed</a>
-			<a class="button" ng-click="getSchedule('4')">Thu</a>
-			<a class="button" ng-click="getSchedule('5')">Fri</a>
+			<!-- <a class="button" ng-click="getSchedule('1')">Mon</a> -->
+			<a class="button" ui-sref="app.courses.day({day:1})" ng-class="{active: day == 1}">Mon</a>
+			<a class="button" ui-sref="app.courses.day({day:2})" ng-class="{active: day == 2}">Tues</a>
+			<a class="button" ui-sref="app.courses.day({day:3})" ng-class="{active: day == 3}">Wed</a>
+			<a class="button" ui-sref="app.courses.day({day:4})" ng-class="{active: day == 4}">Thu</a>
+			<a class="button" ui-sref="app.courses.day({day:5})" ng-class="{active: day == 5}">Fri</a>
 		</div>
 	</div>
-  <ion-content class="has-subheader">
-
-	<div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
-		<div class="item item-divider">
-    		{{course.start_time.toString().toHHMMSS()}}
-  		</div>
-		<a ng-href="http://maps.apple.com/?saddr=Current%20Location&daddr={{course.building}}, 61820">
-		  <div class="item item-text-wrap">
-		    {{course.department}} {{course.course_number}} - {{course.name}}
-		  </div>
-	  	</a>
-		<div class="item item-divider">
-			{{course.room}} {{course.building}}
-		</div>
-	</div>
-    <!-- <ion-list>
-      <ion-item ng-repeat="course in courses" href="#/app/courses/{{course.id}}">
-      <ion-item >
-        
-        {{course.title}}
-      </ion-item>
-    </ion-list> -->
-  </ion-content>
+  
+  	<ui-view name="courseDay"></ui-view>
+  
 </ion-view>

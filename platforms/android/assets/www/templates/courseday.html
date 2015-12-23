@@ -1,0 +1,15 @@
+<ion-content class="has-subheader">
+	<div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
+		<div class="item item-divider">
+    		{{course.start_time.toString().toHHMMSS()}}
+  		</div>
+		<a ng-href="http://maps.apple.com/?saddr=Current%20Location&daddr={{course.building}}, 61820" target='_self'>
+		  <div class="item item-text-wrap">
+		    {{course.department}} {{course.course_number}} - {{course.name}}
+		  </div>
+	  	</a>
+		<div class="item item-divider">
+			{{course.room}} {{course.building}}
+		</div>
+	</div>
+</ion-content>

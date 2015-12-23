@@ -27,7 +27,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
   
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
-  var defaultRoute = "/intro/onboard";
+  var defaultRoute = "/intro/loading";
     if (localStorage.getItem('token')) {
         console.log('wizard has been run - skip!');
         defaultRoute = '/app/courses';
@@ -41,6 +41,12 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
         abstract: true,
         template: '<ion-nav-view></ion-nav-view>',
         // controller: 'IntroCtrl'
+    })
+
+    .state('intro.loading', {
+      url: '/loading',
+      templateUrl: 'templates/loading.html',
+      controller: 'OnboardLoadingCtrl'
     })
 
     .state('intro.onboard', {
@@ -86,6 +92,7 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     })
 
     .state('app.camera', {
+      cache: false,
       url: '/camera',
       views: {
         'menuContent': {
@@ -112,10 +119,19 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
           templateUrl: 'templates/courseday.html',
           controller: 'CourseDayCtrl',
           resolve: {
-            courses: function($stateParams, Schedule) {
-              return Schedule.getDay($stateParams.day).then(function(response){
-                return response.data.schedule
-              })
+            // courses: function($stateParams, Schedule) {
+            //   return Schedule.getDay($stateParams.day).then(function(response){
+            //     return response.data.schedule
+            //   })
+            // }
+            courses: function() {
+              return [
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' }
+  ];
             }
           }
         }
