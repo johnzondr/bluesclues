@@ -9149,4 +9149,5 @@ a.button {
   #course-item .info .location {
     margin-top: 3px; }
   #course-item .navigate {
-    border-left: 1px solid #ECF0F1; }
+    border-left: 1px solid #ECF0F1;
+    padding-top: 30px; }
