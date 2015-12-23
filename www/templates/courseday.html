@@ -20,7 +20,7 @@
 	    		{{course.start_time.toString().toHHMMSS()}}
 	    		</div>
 	    		<div class="row name">
-	    		{{course.name}}
+	    		<!-- {{course.name}} --> Intro to Psychology
 	    		</div>
 	    		<div class="row location">
 	    		{{course.building}}
@@ -28,7 +28,9 @@
 	    		
 	    	</div>
 	    	<div class="col navigate">
-	    		<img ng-src="img/navigate.png">
+	    		<a ng-href="http://maps.apple.com/?saddr=Current%20Location&daddr={{course.building}}, 61820" target='_self'>
+	    			<img ng-src="img/navigate.png">
+	    		</a>
 	    	</div>
 	    </div>
 	  </ion-item>

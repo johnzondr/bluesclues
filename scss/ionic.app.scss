@@ -25,11 +25,17 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $green: #2ECC71;
 $grey: #ECF0F1;
 
-// core css
+// core
 
 #main-header-bar {
 	.bar {
-		// padding: 20px 0;
+		height: 80px;
+		padding: 20px 10px;
+		.title {
+			margin-top: 16px;
+			font-size: 24px;
+			font-weight: 400;
+		}
 	}
 	// ion-header-bar {
 	// 	// padding: 20px 0;
@@ -113,6 +119,7 @@ $grey: #ECF0F1;
 	p {
 		margin-top: 15px;
 		color: #95A5A6;
+		font-size: 20px;
 	}
 }
 
@@ -128,7 +135,7 @@ $grey: #ECF0F1;
 
 		}
 		.name {
-			letter-spacing: -0.5px;
+			letter-spacing: -0.2px;
 			font-size: 18px;
 			font-weight: 600;
 			word-wrap: break-word;
@@ -144,6 +151,6 @@ $grey: #ECF0F1;
 	.navigate {
 		border-left: 1px solid #ECF0F1;
 		padding-top: 30px;
-		
+		padding-left: 20px;
 	}
 }

@@ -9089,6 +9089,14 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+#main-header-bar .bar {
+  height: 80px;
+  padding: 20px 10px; }
+  #main-header-bar .bar .title {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 400; }
+
 #sidemenu {
   background-color: #4A4A4A; }
   #sidemenu .list {
@@ -9133,7 +9141,8 @@ a.button {
   padding: 20px 0; }
   .classes_check p {
     margin-top: 15px;
-    color: #95A5A6; }
+    color: #95A5A6;
+    font-size: 20px; }
 
 #course-item {
   padding: 0; }
@@ -9141,7 +9150,7 @@ a.button {
     font-size: 14px;
     color: #95A5A6; }
   #course-item .info .name {
-    letter-spacing: -0.5px;
+    letter-spacing: -0.2px;
     font-size: 18px;
     font-weight: 600;
     word-wrap: break-word;
@@ -9150,4 +9159,5 @@ a.button {
     margin-top: 3px; }
   #course-item .navigate {
     border-left: 1px solid #ECF0F1;
-    padding-top: 30px; }
+    padding-top: 30px;
+    padding-left: 20px; }
