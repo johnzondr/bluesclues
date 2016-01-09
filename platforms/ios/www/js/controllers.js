@@ -139,6 +139,10 @@ angular.module('keepup.controllers', [])
       })
       .then ( function(response){
         $scope.working = "success";
+        console.log(response.courses);
+        $scope.courses = response.courses;
+
+        // console.log(response);
         // $timeout(function(){
         //   return $state.go('app.courses')
         // }, 2500);
