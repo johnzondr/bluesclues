@@ -2,14 +2,15 @@
   <ion-content padding="true" class="camera">
 <!-- 	  <button ng-click="takePicture()" class="button button-block button-primary">Take Photo</button> -->
 	
-	<button ui-sref="intro.onboard" class="button button-block button-primary">go to onboard</button>
+<!-- 	<button ui-sref="intro.onboard" class="button button-block button-primary">go to onboard</button> -->
 
-	  <!-- <img ng-src="{{lastPhoto}}" style="max-width: 100%"> -->
-		
-		<div ng-show="working" style="margin: 0 auto; width: 100px;">
-    		<ion-spinner></ion-spinner>
-    		<p>{{ working }}</p>
-		</div>
-	  
+	<div class="row">
+	  <div class="col camera-working">
+	  <img ng-show="working == 'uploading'" ng-src="img/onboard/ScanUploading.png">
+	  <img ng-show="working == 'analyzing'" ng-src="img/onboard/ScanActive.png">
+	  <img ng-show="working == 'success'" ng-src="img/onboard/ScanSuccess.png">
+	  </div>
+ 
+	</div>
   </ion-content>
 </ion-view>

@@ -1,5 +1,5 @@
 <ion-content class="has-subheader">
-	<div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
+<!-- 	<div class="card" ng-repeat="course in courses | orderBy: 'start_time'">
 		<div class="item item-divider">
     		{{course.start_time.toString().toHHMMSS()}}
   		</div>
@@ -11,5 +11,20 @@
 		<div class="item item-divider">
 			{{course.room}} {{course.building}}
 		</div>
-	</div>
+	</div> -->
+	
+	<ion-list>
+	  <ion-item ng-repeat="course in courses">
+	  	<schedule-item course="course"></schedule-item>
+	  </ion-item>
+	</ion-list>
+
+	<div class="row">
+  		<div class="col classes_check">
+  			<div class="content_wrapper">
+	  			<img ng-src="img/schedule/classes_check.png">
+	  			<p>That's all your classes today!</p>
+	  		</div>
+  		</div>
+  	</div>
 </ion-content>

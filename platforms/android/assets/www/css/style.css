@@ -47,3 +47,7 @@
 .camera {
 	background-color: #2ECC71;
 }
+
+.camera-working img {
+	width: 100%;
+}

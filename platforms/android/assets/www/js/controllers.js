@@ -92,11 +92,15 @@ angular.module('keepup.controllers', [])
     var hours   = Math.floor(sec_num / 3600);
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
     var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    var cycle = "AM"
 
-    if (hours   < 10) {hours   = "0"+hours;}
+    if (hours > 12) {cycle = "PM"; hours = hours - 12}
+
+    // if (hours   < 10) {hours   = "0"+hours;}
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
-    var time    = hours+':'+minutes;
+    
+    var time    = hours+':'+minutes + ' ' + cycle;
     return time;
   }
 
@@ -110,6 +114,60 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
+.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout) {
+  $scope.courses = courses;
+  $scope.working = "Looks like you're enrolled in the following:";
+
+  var token = $localstorage.get('token');
+
+  $scope.removeCourse = function(course) {
+    Schedule.remove(course);
+    $scope.courses.splice($scope.courses.indexOf(course),1);
+  };
+
+  $scope.takePicture = function () {
+    return Ocr
+      .takePicture()
+      .then( function(ImageUri) {
+        $scope.working = "Uploading your picture to our servers..."
+        return Ocr.postOcr(ImageUri)
+      })
+      .then( function(taskId) {
+        $scope.working = "Analyzing the image..."
+        console.log('task id ' +taskId);
+        return Ocr.parseTask(taskId)
+      })
+      .then ( function(response){
+        $scope.working = "Success!";
+        console.log(response.courses);
+        $scope.courses = response.courses;
+        $timeout(function(){
+          $scope.working = "Looks like you're enrolled in the following:"
+        }, 2500);
+      });
+
+  }
+
+  String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    var cycle = "AM"
+
+    if (hours > 12) {cycle = "PM"; hours = hours - 12}
+
+    // if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    
+    var time    = hours+':'+minutes + ' ' + cycle;
+    return time;
+  }
+
+
+  
+})
 .controller('ClearCtrl', function($scope, $http, $localstorage) {
 
 
@@ -149,7 +207,7 @@ $timeout($state.go('intro.onboard'), 2000);
 
 
 
-.controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser) {
+.controller('CameraCtrl', function($scope, $cordovaFileTransfer, $http, $localstorage, Ocr, $cordovaDevice, RegisterUser, $timeout, $state) {
 
   var token = $localstorage.get('token');
   console.log('token  ' +token);
@@ -159,17 +217,19 @@ $timeout($state.go('intro.onboard'), 2000);
     return Ocr
       .takePicture()
       .then( function(ImageUri) {
-        $scope.working = "uploading image"
+        $scope.working = "uploading"
         return Ocr.postOcr(ImageUri)
       })
       .then( function(taskId) {
-        $scope.working = "analyzing image"
+        $scope.working = "analyzing"
         console.log('task id ' +taskId);
         return Ocr.parseTask(taskId)
       })
       .then ( function(response){
-        $scope.working = false;
-        alert(response);
+        $scope.working = "success";
+        $timeout(function(){
+          return $state.go('app.courses')
+        }, 2500);
       });
 
   }

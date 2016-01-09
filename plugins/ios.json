@@ -15,6 +15,9 @@
         },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "ionic-plugin-deploy": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
         }
     },
     "dependent_plugins": {

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'keepup.factories', 'ngCordova', 'ionic.utils'])
+angular.module('keepup', ['ionic','ionic.service.core', 'keepup.controllers', 'keepup.services', 'keepup.factories', 'keepup.directives', 'ngCordova', 'ionic.utils'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -55,6 +55,14 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       controller: 'IntroCtrl'
     })
 
+    .state('intro.camera', {
+      cache: false,
+      url: '/camera',        
+      templateUrl: 'templates/camera.html',
+      controller: 'CameraCtrl'
+    })
+
+
     .state('app', {
     url: '/app',
     abstract: true,
@@ -73,11 +81,32 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
     },
   })
 
-  .state('app.search', {
-    url: '/search',
+  .state('app.edit', {
+    url: '/edit',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/edit.html',
+        controller: 'EditClassesCtrl',
+        resolve: {
+          courses: function() {
+            return [
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' }
+];
+          },
+
+          courses: function(Schedule) {
+            return Schedule.getDay(0).then(function(response){
+              console.log(response);
+              return response.data.schedule
+            })
+          }
+
+        
+        }
       }
     }
   })
@@ -87,17 +116,6 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-
-    .state('app.camera', {
-      cache: false,
-      url: '/camera',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/camera.html',
-          controller: 'CameraCtrl'
         }
       }
     })
@@ -119,16 +137,28 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
           templateUrl: 'templates/courseday.html',
           controller: 'CourseDayCtrl',
           resolve: {
+
+            courses: function() {
+              return [
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+    { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' }
+  ];
+            },
+            
             courses: function($stateParams, Schedule) {
               return Schedule.getDay($stateParams.day).then(function(response){
                 return response.data.schedule
               })
             }
+
+
           }
         }
       }
       
-      // controller: 'TodoCtrl',
     })
 
 

@@ -1,5 +1,33 @@
 angular.module('keepup.controllers', [])
 
+// .controller('DashCtrl', function($scope) {
+  
+//   var deploy = new Ionic.Deploy();
+  
+//   // Update app code with new release from Ionic Deploy
+//   $scope.doUpdate = function() {
+//     deploy.update().then(function(res) {
+//       console.log('Ionic Deploy: Update Success! ', res);
+//     }, function(err) {
+//       console.log('Ionic Deploy: Update error! ', err);
+//     }, function(prog) {
+//       console.log('Ionic Deploy: Progress... ', prog);
+//     });
+//   };
+
+//   // Check Ionic Deploy for new code
+//   $scope.checkForUpdates = function() {
+//     console.log('Ionic Deploy: Checking for updates');
+//     deploy.check().then(function(hasUpdate) {
+//       console.log('Ionic Deploy: Update available: ' + hasUpdate);
+//       $scope.hasUpdate = hasUpdate;
+//     }, function(err) {
+//       console.error('Ionic Deploy: Unable to check for updates', err);
+//     });
+//   }
+
+// })
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -116,7 +144,7 @@ angular.module('keepup.controllers', [])
 
 .controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout) {
   $scope.courses = courses;
-  $scope.working = null;
+  $scope.working = "Looks like you're enrolled in the following:";
 
   var token = $localstorage.get('token');
 
@@ -129,23 +157,21 @@ angular.module('keepup.controllers', [])
     return Ocr
       .takePicture()
       .then( function(ImageUri) {
-        $scope.working = "uploading"
+        $scope.working = "Uploading your picture to our servers..."
         return Ocr.postOcr(ImageUri)
       })
       .then( function(taskId) {
-        $scope.working = "analyzing"
+        $scope.working = "Analyzing the image..."
         console.log('task id ' +taskId);
         return Ocr.parseTask(taskId)
       })
       .then ( function(response){
-        $scope.working = "success";
+        $scope.working = "Success!";
         console.log(response.courses);
         $scope.courses = response.courses;
-
-        // console.log(response);
-        // $timeout(function(){
-        //   return $state.go('app.courses')
-        // }, 2500);
+        $timeout(function(){
+          $scope.working = "Looks like you're enrolled in the following:"
+        }, 2500);
       });
 
   }
