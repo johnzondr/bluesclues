@@ -9101,6 +9101,9 @@ ion-content {
     font-size: 24px;
     font-weight: 400; }
 
+.scroll-bar-indicator {
+  display: none; }
+
 .has-header {
   top: 80px; }
 
@@ -9120,6 +9123,8 @@ ion-content {
   #sidemenu .list ion-item {
     background-color: transparent;
     border-style: none; }
+    #sidemenu .list ion-item svg {
+      margin-right: 4px; }
     #sidemenu .list ion-item img {
       margin-right: 4px; }
     #sidemenu .list ion-item a {
@@ -9179,3 +9184,12 @@ ion-content {
 
 #class-edit-item .navigate {
   padding-top: 40px; }
+
+#camera-button {
+  height: 50px; }
+  #camera-button h1 {
+    font-weight: 400; }
+  #camera-button svg {
+    position: relative;
+    top: 2px;
+    margin-right: 5px; }

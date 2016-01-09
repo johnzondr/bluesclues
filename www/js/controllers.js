@@ -116,12 +116,10 @@ angular.module('keepup.controllers', [])
 
 .controller('EditClassesCtrl', function($scope, courses, Schedule) {
   $scope.courses = courses;
+  
   $scope.removeCourse = function(course) {
-    Schedule.remove(course).then(function(response){
-      alert('done!');
-    });
-  $scope.courses.splice($scope.courses.indexOf(course),1);
-
+    Schedule.remove(course);
+    $scope.courses.splice($scope.courses.indexOf(course),1);
   };
 
 

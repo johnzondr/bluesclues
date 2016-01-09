@@ -49,6 +49,12 @@ ion-content {
 	// }
 }
 
+// hide scrollbar
+.scroll-bar-indicator
+{
+	display: none;
+}
+
 .has-header {
 	top: 80px;
 }
@@ -74,6 +80,9 @@ ion-content {
 	.list {
 		margin-top: 50px;
 		ion-item {
+			svg {
+				margin-right: 4px;
+			}
 			background-color: transparent;
 			border-style: none;
 			img {
@@ -186,3 +195,19 @@ ion-content {
 		padding-top: 40px;
 	}
 }
+
+
+//edit schedule view
+
+#camera-button {
+	height: 50px;
+	h1 {
+		font-weight: 400;
+	}
+	svg {
+		position: relative;
+		top: 2px;
+		margin-right: 5px;
+	}
+}
+

@@ -55,6 +55,14 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       controller: 'IntroCtrl'
     })
 
+    .state('intro.camera', {
+      cache: false,
+      url: '/camera',        
+      templateUrl: 'templates/camera.html',
+      controller: 'CameraCtrl'
+    })
+
+
     .state('app', {
     url: '/app',
     abstract: true,
@@ -80,20 +88,23 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
         templateUrl: 'templates/edit.html',
         controller: 'EditClassesCtrl',
         resolve: {
-          courses: function(Schedule) {
-            return Schedule.getDay(0).then(function(response){
-              return response.data.schedule
-            })
-          }
-//           courses: function() {
-//             return [
-//   { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
-//   { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
-//   { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
-//   { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
-//   { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' }
-// ];
-//           }
+          courses: function() {
+            return [
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' },
+  { department: 'BADM', course_number: '51271', name: 'Undergraduate Open Seminar', room: '243', building: 'Wohlers Hall', start_time: '50400' }
+];
+          },
+
+          // courses: function(Schedule) {
+          //   return Schedule.getDay(0).then(function(response){
+          //     return response.data.schedule
+          //   })
+          // }
+
+        
         }
       }
     }
@@ -104,17 +115,6 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html'
-        }
-      }
-    })
-
-    .state('app.camera', {
-      cache: false,
-      url: '/camera',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/camera.html',
-          controller: 'CameraCtrl'
         }
       }
     })
