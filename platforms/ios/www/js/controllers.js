@@ -114,14 +114,37 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
-.controller('EditClassesCtrl', function($scope, courses, Schedule) {
+.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout) {
   $scope.courses = courses;
-  
+  $scope.working = null;
+
+  var token = $localstorage.get('token');
+
   $scope.removeCourse = function(course) {
     Schedule.remove(course);
     $scope.courses.splice($scope.courses.indexOf(course),1);
   };
 
+  $scope.takePicture = function () {
+    return Ocr
+      .takePicture()
+      .then( function(ImageUri) {
+        $scope.working = "uploading"
+        return Ocr.postOcr(ImageUri)
+      })
+      .then( function(taskId) {
+        $scope.working = "analyzing"
+        console.log('task id ' +taskId);
+        return Ocr.parseTask(taskId)
+      })
+      .then ( function(response){
+        $scope.working = "success";
+        // $timeout(function(){
+        //   return $state.go('app.courses')
+        // }, 2500);
+      });
+
+  }
 
   String.prototype.toHHMMSS = function () {
     var sec_num = parseInt(this, 10); // don't forget the second param
@@ -139,6 +162,8 @@ angular.module('keepup.controllers', [])
     var time    = hours+':'+minutes + ' ' + cycle;
     return time;
   }
+
+
   
 })
 .controller('ClearCtrl', function($scope, $http, $localstorage) {

@@ -1,7 +1,7 @@
 <ion-view view-title="Edit Classes">
   <div class="bar bar-subheader center"> 
   	<div style="width:70%; display:inline-block;">
-  		Looks like you're enrolled in the following:
+  		Looks like you're enrolled in the following: {{working}}
   	</div>
   </div>
 
@@ -15,7 +15,7 @@
 
   </ion-content>
 
-	<ion-footer-bar align-title="center" class="bar-energized" id="camera-button">
+	<ion-footer-bar align-title="center" class="bar-energized" id="camera-button" ng-click="takePicture()">
 		<h1 class="title"> <svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
     <title>camera</title>

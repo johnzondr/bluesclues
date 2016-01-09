@@ -98,11 +98,11 @@ angular.module('keepup', ['ionic', 'keepup.controllers', 'keepup.services', 'kee
 ];
           },
 
-          // courses: function(Schedule) {
-          //   return Schedule.getDay(0).then(function(response){
-          //     return response.data.schedule
-          //   })
-          // }
+          courses: function(Schedule) {
+            return Schedule.getDay(0).then(function(response){
+              return response.data.schedule
+            })
+          }
 
         
         }
