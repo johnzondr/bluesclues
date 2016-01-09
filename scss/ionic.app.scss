@@ -25,14 +25,21 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $green: #2ECC71;
 $grey: #ECF0F1;
 
+// helper classes
+.center {
+	text-align: center;
+}
 // core
+ion-content {
+	background-color: $grey;
+}
 
 #main-header-bar {
 	.bar {
 		height: 80px;
-		padding: 20px 10px;
+		// padding: 20px 10px;
 		.title {
-			margin-top: 16px;
+			// margin-top: 25px;
 			font-size: 24px;
 			font-weight: 400;
 		}
@@ -42,9 +49,27 @@ $grey: #ECF0F1;
 	// }
 }
 
+.has-header {
+	top: 80px;
+}
+
+.bar-subheader {
+	// top: 80px;
+	top: 80px !important;	
+	// height: 55px;
+	border: none;
+	background-image: none;
+}
+
+.has-subheader {
+	top: 130px !important;
+}
 //side mineu
 #sidemenu {
-	background-color: #4A4A4A;
+	ion-content {
+		background-color: #4A4A4A;	
+	}
+	
 
 	.list {
 		margin-top: 50px;
@@ -68,7 +93,6 @@ $grey: #ECF0F1;
 // main courses view
 #schedule {
 	ion-content {
-		background-color: $grey;
 		top: 128px;
 	}
 	// list of courses
@@ -83,7 +107,7 @@ $grey: #ECF0F1;
 
 // sub-header bar
 #courses-day-selector {
-	top: 84px;
+	top: 80px;
 	padding: 0;
 	height: auto;
 	.button-bar {
@@ -112,6 +136,7 @@ $grey: #ECF0F1;
 
 .classes_check {
 	padding: 20px 0;
+	text-align: center;
 
 	div {
 		
@@ -138,7 +163,6 @@ $grey: #ECF0F1;
 			letter-spacing: -0.2px;
 			font-size: 18px;
 			font-weight: 600;
-			word-wrap: break-word;
 			margin: 0px 0;
 		}
 
@@ -151,6 +175,14 @@ $grey: #ECF0F1;
 	.navigate {
 		border-left: 1px solid #ECF0F1;
 		padding-top: 30px;
-		padding-left: 20px;
+		text-align: center;
+	}
+}
+
+
+#class-edit-item {
+	@extend #course-item;
+	.navigate {
+		padding-top: 40px;
 	}
 }

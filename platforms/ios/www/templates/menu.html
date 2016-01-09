@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-stable">
+    <ion-nav-bar class="bar-balanced" id="main-header-bar">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -12,26 +12,52 @@
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
-  <ion-side-menu side="left">
-    <ion-header-bar class="bar-stable">
+  <ion-side-menu side="left" id="sidemenu">
+<!--     <ion-header-bar class="bar-balanced">
       <h1 class="title">Menu</h1>
-    </ion-header-bar>
+    </ion-header-bar> -->
     <ion-content>
       <ion-list>
         <ion-item menu-close href="#/app/courses">
-          Home
+          <svg width="21px" height="20px" viewBox="0 0 21 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>home</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="MenuActive" sketch:type="MSArtboardGroup" transform="translate(-16.000000, -110.000000)" fill="#FFFFFF">
+            <g id="home" sketch:type="MSLayerGroup" transform="translate(15.000000, 110.000000)">
+                <path d="M16.8333333,20 L5.16666667,20 C4.66666667,20 4.33333333,19.6666667 4.33333333,19.1666667 L4.33333333,11.6666667 L1.83333333,11.6666667 C1.5,11.6666667 1.16666667,11.5 1.08333333,11.1666667 C0.916666667,10.8333333 1,10.5 1.25,10.25 L10.4166667,0.25 C10.75,-0.0833333333 11.3333333,-0.0833333333 11.6666667,0.25 L20.8333333,10.25 C21.0833333,10.5 21.0833333,10.8333333 21,11.1666667 C20.8333333,11.5 20.5,11.6666667 20.1666667,11.6666667 L17.6666667,11.6666667 L17.6666667,19.1666667 C17.6666667,19.6666667 17.3333333,20 16.8333333,20 L16.8333333,20 Z M6,18.3333333 L16,18.3333333 L16,10.8333333 C16,10.3333333 16.3333333,10 16.8333333,10 L18.25,10 L11,2.08333333 L3.75,10 L5.16666667,10 C5.66666667,10 6,10.3333333 6,10.8333333 L6,18.3333333 L6,18.3333333 Z" id="Fill-1" sketch:type="MSShapeGroup"></path>
+                <path d="M12.6666667,20 L9.33333333,20 C8.83333333,20 8.5,19.6666667 8.5,19.1666667 L8.5,14.1666667 C8.5,13.6666667 8.83333333,13.3333333 9.33333333,13.3333333 L12.6666667,13.3333333 C13.1666667,13.3333333 13.5,13.6666667 13.5,14.1666667 L13.5,19.1666667 C13.5,19.6666667 13.1666667,20 12.6666667,20 L12.6666667,20 Z M10.1666667,18.3333333 L11.8333333,18.3333333 L11.8333333,15 L10.1666667,15 L10.1666667,18.3333333 L10.1666667,18.3333333 Z" id="Fill-3" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>Home
         </ion-item>
-        <!-- <ion-item menu-close ng-click="login()">
+<!--         <ion-item menu-close ng-click="login()">
           Login
         </ion-item> -->
-        <!-- <ion-item menu-close href="#/app/search">
+        <ion-item menu-close href="#/app/edit">
           Edit Schedule
-        </ion-item> -->
+        </ion-item>
         <ion-item menu-close href="#/app/camera">
-          Camera
+          <svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>camera</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="MenuActive" sketch:type="MSArtboardGroup" transform="translate(-15.000000, -170.000000)" fill="#FFFFFF">
+            <g id="camera" sketch:type="MSLayerGroup" transform="translate(15.000000, 170.333333)">
+                <path d="M17.1666667,16.6666667 L2.83333333,16.6666667 C1.25,16.6666667 0,15.4166667 0,13.8333333 L0,6.16666667 C0,4.58333333 1.25,3.33333333 2.83333333,3.33333333 C3.33333333,3.33333333 3.75,3.08333333 4,2.66666667 L4.5,1.58333333 C5,0.583333333 6,-8.52651283e-14 7.08333333,-8.52651283e-14 L12.9166667,-8.52651283e-14 C14,-8.52651283e-14 15,0.583333333 15.5,1.58333333 L16,2.66666667 C16.25,3.08333333 16.6666667,3.33333333 17.0833333,3.33333333 C18.75,3.33333333 20,4.58333333 20,6.16666667 L20,13.75 C20,15.4166667 18.75,16.6666667 17.1666667,16.6666667 L17.1666667,16.6666667 Z M7.08333333,1.66666667 C6.66666667,1.66666667 6.25,1.91666667 6,2.33333333 L5.5,3.41666667 C5,4.41666667 4,5 2.91666667,5 C2.16666667,5 1.66666667,5.5 1.66666667,6.16666667 L1.66666667,13.75 C1.66666667,14.5 2.16666667,15 2.83333333,15 L17.0833333,15 C17.75,15 18.25,14.5 18.25,13.8333333 L18.25,6.16666667 C18.3333333,5.5 17.8333333,5 17.1666667,5 C16,5 15.0833333,4.41666667 14.5833333,3.41666667 L14.0833333,2.33333333 C13.75,1.91666667 13.3333333,1.66666667 12.9166667,1.66666667 L7.08333333,1.66666667 L7.08333333,1.66666667 Z" id="Fill-1" sketch:type="MSShapeGroup"></path>
+                <path d="M10,13.3333333 C7.66666667,13.3333333 5.83333333,11.5 5.83333333,9.16666667 C5.83333333,6.83333333 7.66666667,5 10,5 C12.3333333,5 14.1666667,6.83333333 14.1666667,9.16666667 C14.1666667,11.5 12.3333333,13.3333333 10,13.3333333 L10,13.3333333 Z M10,6.66666667 C8.58333333,6.66666667 7.5,7.75 7.5,9.16666667 C7.5,10.5833333 8.58333333,11.6666667 10,11.6666667 C11.4166667,11.6666667 12.5,10.5833333 12.5,9.16666667 C12.5,7.75 11.4166667,6.66666667 10,6.66666667 L10,6.66666667 Z" id="Fill-3" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg> Camera
         </ion-item>
         <ion-item menu-close href="#/app/clear">
-          Clear Schedule
+          <img ng-src="img/menu/camera.svg"> Clear Schedule
         </ion-item>
         <!-- <ion-item menu-close href="#/app/onboard">
           Onboard

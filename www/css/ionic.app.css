@@ -9089,32 +9089,47 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.center {
+  text-align: center; }
+
+ion-content {
+  background-color: #ECF0F1; }
+
 #main-header-bar .bar {
-  height: 80px;
-  padding: 20px 10px; }
+  height: 80px; }
   #main-header-bar .bar .title {
-    margin-top: 16px;
     font-size: 24px;
     font-weight: 400; }
 
-#sidemenu {
+.has-header {
+  top: 80px; }
+
+.bar-subheader {
+  top: 80px !important;
+  border: none;
+  background-image: none; }
+
+.has-subheader {
+  top: 130px !important; }
+
+#sidemenu ion-content {
   background-color: #4A4A4A; }
-  #sidemenu .list {
-    margin-top: 50px; }
-    #sidemenu .list ion-item {
+
+#sidemenu .list {
+  margin-top: 50px; }
+  #sidemenu .list ion-item {
+    background-color: transparent;
+    border-style: none; }
+    #sidemenu .list ion-item img {
+      margin-right: 4px; }
+    #sidemenu .list ion-item a {
       background-color: transparent;
-      border-style: none; }
-      #sidemenu .list ion-item img {
-        margin-right: 4px; }
-      #sidemenu .list ion-item a {
-        background-color: transparent;
-        color: white;
-        font-weight: 200;
-        font-size: 22px;
-        letter-spacing: 2px; }
+      color: white;
+      font-weight: 200;
+      font-size: 22px;
+      letter-spacing: 2px; }
 
 #schedule ion-content {
-  background-color: #ECF0F1;
   top: 128px; }
 
 #schedule .list {
@@ -9124,7 +9139,7 @@ a.button {
     margin: 8px 0; }
 
 #courses-day-selector {
-  top: 84px;
+  top: 80px;
   padding: 0;
   height: auto; }
   #courses-day-selector a.button {
@@ -9138,26 +9153,29 @@ a.button {
       border-bottom: 4px solid #2ECC71; }
 
 .classes_check {
-  padding: 20px 0; }
+  padding: 20px 0;
+  text-align: center; }
   .classes_check p {
     margin-top: 15px;
     color: #95A5A6;
     font-size: 20px; }
 
-#course-item {
+#course-item, #class-edit-item {
   padding: 0; }
-  #course-item .info .start_time, #course-item .info .location {
+  #course-item .info .start_time, #class-edit-item .info .start_time, #course-item .info .location, #class-edit-item .info .location {
     font-size: 14px;
     color: #95A5A6; }
-  #course-item .info .name {
+  #course-item .info .name, #class-edit-item .info .name {
     letter-spacing: -0.2px;
     font-size: 18px;
     font-weight: 600;
-    word-wrap: break-word;
     margin: 0px 0; }
-  #course-item .info .location {
+  #course-item .info .location, #class-edit-item .info .location {
     margin-top: 3px; }
-  #course-item .navigate {
+  #course-item .navigate, #class-edit-item .navigate {
     border-left: 1px solid #ECF0F1;
     padding-top: 30px;
-    padding-left: 20px; }
+    text-align: center; }
+
+#class-edit-item .navigate {
+  padding-top: 40px; }

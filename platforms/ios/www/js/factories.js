@@ -11,9 +11,21 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token, day: day }
 	    	})
-  	}
+  	},
+  	remove: function(course) {
+
+  		console.log('attemping to unenroll user from course ' + course.name)
+	    token = $localstorage.get('token');
+	    return $http({
+	    	method: 'DELETE',
+	    	url: 'https://keep-backend.herokuapp.com/schedules/'+course.id,
+	    	headers: {'Accept': 'application/vnd.keepup.v1'},
+	    	params: {token: token}
+	    	})
+  	} 
   };
 })
+
 
 .factory('RegisterUser', function($http) {
 	return {

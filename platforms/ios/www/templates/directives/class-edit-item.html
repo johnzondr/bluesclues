@@ -1,0 +1,18 @@
+<div class="row" id="class-edit-item">
+	<div class="col col-80 info">
+		<div class="row start_time">
+		{{course.start_time.toString().toHHMMSS()}}
+		</div>
+		<div class="row name">
+		{{course.name}} 
+		</div>
+		<div class="row location">
+		{{course.department}} {{course.room}}
+		</div>
+		
+	</div>
+	<div ng-click="removeCourse({course:course})" class="col navigate">
+			<img ng-src="img/cancel2.png">
+	</div>
+</div>
+

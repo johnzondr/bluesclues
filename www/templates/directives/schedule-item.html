@@ -1,0 +1,20 @@
+<div class="row" id="course-item">
+	<div class="col col-80 info">
+		<div class="row start_time">
+		{{course.start_time.toString().toHHMMSS()}}
+		</div>
+		<div class="row name">
+		{{course.name}} 
+		</div>
+		<div class="row location">
+		{{course.building}}
+		</div>
+		
+	</div>
+	<div class="col navigate">
+		<a ng-href="http://maps.apple.com/?saddr=Current%20Location&daddr={{course.building}}, 61820" target='_self'>
+			<img ng-src="img/navigate.png">
+		</a>
+	</div>
+</div>
+

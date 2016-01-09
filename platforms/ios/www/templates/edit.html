@@ -1,0 +1,17 @@
+<ion-view view-title="Edit Classes">
+  <div class="bar bar-subheader center"> 
+  	<div style="width:70%; display:inline-block;">
+  		Looks like you're enrolled in the following:
+  	</div>
+  </div>
+
+  <ion-content class="has-subheader">
+
+	<ion-list>
+	  <ion-item ng-repeat="course in courses" style="padding:0; margin: 8px 0;">
+	  	<class-edit-item course="course" remove-course="removeCourse(course)"></class-edit-item>
+	  </ion-item>
+	</ion-list>
+
+  </ion-content>
+</ion-view>

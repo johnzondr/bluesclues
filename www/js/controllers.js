@@ -72,13 +72,13 @@ angular.module('keepup.controllers', [])
   });
 
 
-  $scope.courses = [
-    { title: 'Accounting 201', id: 1 },
-    { title: 'Business 101', id: 2 },
-    { title: 'Engineering 185', id: 3 },
-    { title: 'Art 300', id: 4 },
-    { title: 'History 125', id: 5 },
-  ];
+  // $scope.courses = [
+  //   { title: 'Accounting 201', id: 1 },
+  //   { title: 'Business 101', id: 2 },
+  //   { title: 'Engineering 185', id: 3 },
+  //   { title: 'Art 300', id: 4 },
+  //   { title: 'History 125', id: 5 },
+  // ];
 })
 
 
@@ -114,6 +114,35 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
+.controller('EditClassesCtrl', function($scope, courses, Schedule) {
+  $scope.courses = courses;
+  $scope.removeCourse = function(course) {
+    Schedule.remove(course).then(function(response){
+      alert('done!');
+    });
+  $scope.courses.splice($scope.courses.indexOf(course),1);
+
+  };
+
+
+  String.prototype.toHHMMSS = function () {
+    var sec_num = parseInt(this, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    var cycle = "AM"
+
+    if (hours > 12) {cycle = "PM"; hours = hours - 12}
+
+    // if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    
+    var time    = hours+':'+minutes + ' ' + cycle;
+    return time;
+  }
+  
+})
 .controller('ClearCtrl', function($scope, $http, $localstorage) {
 
 
