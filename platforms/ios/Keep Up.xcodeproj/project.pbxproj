@@ -87,6 +87,14 @@
 		ACB77DDF5A2A44CB9632CC4E /* UNIHTTPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A34001F8C1F42938DBAA132 /* UNIHTTPResponse.m */; };
 		F1A7DBC62CC74903A3F205D1 /* UNIHTTPStringResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E162147BB6FF40989BE9D543 /* UNIHTTPStringResponse.m */; };
 		2D4706369CB34007B65AC296 /* UNIJsonNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A874CF57B365450D9700E877 /* UNIJsonNode.m */; };
+		2AA4E6935FAA4540B33E65A9 /* UniversalAnalyticsPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = F45CBBE710EC44CE9BC92F0B /* UniversalAnalyticsPlugin.m */; };
+		57A9DAF22E684E3A9E872163 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7897F06B700E491D91F95388 /* libGoogleAnalyticsServices.a */; };
+		E022ABDE025B43F686DF4846 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F23909B819E40D785877A31 /* SystemConfiguration.framework */; };
+		162BEA56D75546C5ADE828AC /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3616387D6FFA4237A3D50004 /* CoreData.framework */; };
+		9F7A42CAE511410CBB0ED9C7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DFA6D5B04174AE88CACCA32 /* libz.dylib */; };
+		257B3B700FB54DCCA6F403A8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 553898B034424238A3A8A9A6 /* libsqlite3.dylib */; };
+		C9EC19762E234F6D92EC8387 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9AC0029C194697831E88A0 /* IonicKeyboard.m */; };
+		11BB07F493ED41349A627E8E /* UIWebViewExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9BD7C2D14A4C6AAB436F8C /* UIWebViewExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +251,27 @@
 		64DB6E81ECF94A2C89B0A4DE /* UNIHTTPResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UNIHTTPResponse.h"; path = "ionic-plugin-deploy/UNIHTTPResponse.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		3D78B596F1AF491A9EE9ECAA /* UNIHTTPStringResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UNIHTTPStringResponse.h"; path = "ionic-plugin-deploy/UNIHTTPStringResponse.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		6908FC21685248F2B032F897 /* UNIJsonNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UNIJsonNode.h"; path = "ionic-plugin-deploy/UNIJsonNode.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		F45CBBE710EC44CE9BC92F0B /* UniversalAnalyticsPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UniversalAnalyticsPlugin.m"; path = "cordova-plugin-google-analytics/UniversalAnalyticsPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		7897F06B700E491D91F95388 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libGoogleAnalyticsServices.a"; path = "Keep Up/Plugins/cordova-plugin-google-analytics/libGoogleAnalyticsServices.a"; sourceTree = "<group>"; fileEncoding = 4; };
+		F1B09496BA1542A0BBA652E4 /* UniversalAnalyticsPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UniversalAnalyticsPlugin.h"; path = "cordova-plugin-google-analytics/UniversalAnalyticsPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		6F05CCB7A2864B0E9AFF048D /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIDictionaryBuilder.h"; path = "cordova-plugin-google-analytics/GAIDictionaryBuilder.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		4336054B8A2E44C69E9F266A /* GAIFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIFields.h"; path = "cordova-plugin-google-analytics/GAIFields.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		37962091C00D4138890BD361 /* GAILogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAILogger.h"; path = "cordova-plugin-google-analytics/GAILogger.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		71D4739A4C484C19BE259E7F /* GAITrackedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITrackedViewController.h"; path = "cordova-plugin-google-analytics/GAITrackedViewController.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		ECA90CB7FDCA40F08BFE32E1 /* GAI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAI.h"; path = "cordova-plugin-google-analytics/GAI.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		0047D6AD93624EA9B5730272 /* GAITracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAITracker.h"; path = "cordova-plugin-google-analytics/GAITracker.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		C3F13EEFC5FC491BBB7FE8D3 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceFields.h"; path = "cordova-plugin-google-analytics/GAIEcommerceFields.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		363C77158DCD43169EF88760 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceProduct.h"; path = "cordova-plugin-google-analytics/GAIEcommerceProduct.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		05BD71B6DBC54860BF841931 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommerceProductAction.h"; path = "cordova-plugin-google-analytics/GAIEcommerceProductAction.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		970ECC156CB84B5CA7A2A045 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GAIEcommercePromotion.h"; path = "cordova-plugin-google-analytics/GAIEcommercePromotion.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8F23909B819E40D785877A31 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		3616387D6FFA4237A3D50004 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "CoreData.framework"; path = "System/Library/Frameworks/CoreData.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		8DFA6D5B04174AE88CACCA32 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libz.dylib"; path = "usr/lib/libz.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		553898B034424238A3A8A9A6 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libsqlite3.dylib"; path = "usr/lib/libsqlite3.dylib"; sourceTree = SDKROOT; fileEncoding = 4; };
+		FA9AC0029C194697831E88A0 /* IonicKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		5A9BD7C2D14A4C6AAB436F8C /* UIWebViewExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIWebViewExtension.m"; path = "ionic-plugin-keyboard/UIWebViewExtension.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		02AD12CD22C14903A4A42731 /* IonicKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		3297F5AD37014485AAC79BBA /* UIWebViewExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIWebViewExtension.h"; path = "ionic-plugin-keyboard/UIWebViewExtension.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +286,11 @@
 				B84D62A89CE54424A5C77D91 /* ImageIO.framework in Frameworks */,
 				AE491895D382458E8934B4CD /* CoreLocation.framework in Frameworks */,
 				6D24D7707D1D4B4A8127D176 /* AVFoundation.framework in Frameworks */,
+				57A9DAF22E684E3A9E872163 /* libGoogleAnalyticsServices.a in Frameworks */,
+				E022ABDE025B43F686DF4846 /* SystemConfiguration.framework in Frameworks */,
+				162BEA56D75546C5ADE828AC /* CoreData.framework in Frameworks */,
+				9F7A42CAE511410CBB0ED9C7 /* libz.dylib in Frameworks */,
+				257B3B700FB54DCCA6F403A8 /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +366,11 @@
 				D6F866B51FE1484DBCF9E50B /* ImageIO.framework */,
 				7C0B89A2F6A043608CE39585 /* CoreLocation.framework */,
 				93AFDBDA4D774ADE997400AB /* AVFoundation.framework */,
+				7897F06B700E491D91F95388 /* libGoogleAnalyticsServices.a */,
+				8F23909B819E40D785877A31 /* SystemConfiguration.framework */,
+				3616387D6FFA4237A3D50004 /* CoreData.framework */,
+				8DFA6D5B04174AE88CACCA32 /* libz.dylib */,
+				553898B034424238A3A8A9A6 /* libsqlite3.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -437,6 +476,22 @@
 				64DB6E81ECF94A2C89B0A4DE /* UNIHTTPResponse.h */,
 				3D78B596F1AF491A9EE9ECAA /* UNIHTTPStringResponse.h */,
 				6908FC21685248F2B032F897 /* UNIJsonNode.h */,
+				F45CBBE710EC44CE9BC92F0B /* UniversalAnalyticsPlugin.m */,
+				F1B09496BA1542A0BBA652E4 /* UniversalAnalyticsPlugin.h */,
+				6F05CCB7A2864B0E9AFF048D /* GAIDictionaryBuilder.h */,
+				4336054B8A2E44C69E9F266A /* GAIFields.h */,
+				37962091C00D4138890BD361 /* GAILogger.h */,
+				71D4739A4C484C19BE259E7F /* GAITrackedViewController.h */,
+				ECA90CB7FDCA40F08BFE32E1 /* GAI.h */,
+				0047D6AD93624EA9B5730272 /* GAITracker.h */,
+				C3F13EEFC5FC491BBB7FE8D3 /* GAIEcommerceFields.h */,
+				363C77158DCD43169EF88760 /* GAIEcommerceProduct.h */,
+				05BD71B6DBC54860BF841931 /* GAIEcommerceProductAction.h */,
+				970ECC156CB84B5CA7A2A045 /* GAIEcommercePromotion.h */,
+				FA9AC0029C194697831E88A0 /* IonicKeyboard.m */,
+				5A9BD7C2D14A4C6AAB436F8C /* UIWebViewExtension.m */,
+				02AD12CD22C14903A4A42731 /* IonicKeyboard.h */,
+				3297F5AD37014485AAC79BBA /* UIWebViewExtension.h */,
 			);
 			name = Plugins;
 			path = "Keep Up/Plugins";
@@ -671,6 +726,9 @@
 				ACB77DDF5A2A44CB9632CC4E /* UNIHTTPResponse.m in Sources */,
 				F1A7DBC62CC74903A3F205D1 /* UNIHTTPStringResponse.m in Sources */,
 				2D4706369CB34007B65AC296 /* UNIJsonNode.m in Sources */,
+				2AA4E6935FAA4540B33E65A9 /* UniversalAnalyticsPlugin.m in Sources */,
+				C9EC19762E234F6D92EC8387 /* IonicKeyboard.m in Sources */,
+				11BB07F493ED41349A627E8E /* UIWebViewExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,6 +774,10 @@
 				PRODUCT_NAME = "Keep Up";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Keep Up/Plugins/cordova-plugin-google-analytics\"",
+				);
 			};
 			name = Debug;
 		};
@@ -748,6 +810,10 @@
 				PRODUCT_NAME = "Keep Up";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Keep Up/Plugins/cordova-plugin-google-analytics\"",
+				);
 			};
 			name = Release;
 		};

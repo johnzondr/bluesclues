@@ -1,5 +1,34 @@
 angular.module('keepup.controllers', [])
 
+.controller('DashCtrl', function($scope) {
+  
+  var deploy = new Ionic.Deploy();
+  $scope.dafq = "hello";
+  
+  // Update app code with new release from Ionic Deploy
+  $scope.doUpdate = function() {
+    deploy.update().then(function(res) {
+      console.log('Ionic Deploy: Update Success! ', res);
+    }, function(err) {
+      console.log('Ionic Deploy: Update error! ', err);
+    }, function(prog) {
+      console.log('Ionic Deploy: Progress... ', prog);
+    });
+  };
+
+  // Check Ionic Deploy for new code
+  $scope.checkForUpdates = function() {
+    console.log('Ionic Deploy: Checking for updates');
+    deploy.check().then(function(hasUpdate) {
+      console.log('Ionic Deploy: Update available: ' + hasUpdate);
+      $scope.hasUpdate = hasUpdate;
+    }, function(err) {
+      console.error('Ionic Deploy: Unable to check for updates', err);
+    });
+  }
+
+})
+
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
@@ -42,6 +71,11 @@ angular.module('keepup.controllers', [])
 })
 
 .controller('CoursesCtrl', function($scope, $http, $localstorage, $state) {
+
+  // $cordovaGoogleAnalytics.setUserId($localstorage.get('token'));
+  // $cordovaGoogleAnalytics.startTrackerWithId('UA-72218613-1');
+  // $cordovaGoogleAnalytics.trackView('Home Screen');
+  // if(typeof analytics !== undefined) { analytics.trackView("Home View"); }
 
   $scope.$on('$ionicView.afterEnter', function(object, info) {
 
@@ -243,7 +277,7 @@ $timeout($state.go('intro.onboard'), 2000);
     console.log('triggering event device ready');
   // Now safe to use device APIs  
     $scope.uuid = $cordovaDevice.getUUID();
-    console.log($scope.uuid);
+    console.log('uuid is ' + $scope.uuid);
 
     var saveToken = function (response) {
       console.log('getting success callback for user token!');

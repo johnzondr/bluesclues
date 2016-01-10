@@ -18,6 +18,15 @@
         },
         "ionic-plugin-deploy": {
             "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
         }
     },
     "dependent_plugins": {

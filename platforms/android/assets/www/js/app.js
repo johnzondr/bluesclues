@@ -8,6 +8,13 @@ angular.module('keepup', ['ionic','ionic.service.core', 'keepup.controllers', 'k
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+
+    if(typeof analytics !== undefined) {
+        analytics.startTrackerWithId("UA-72218613-1");
+    } else {
+        console.log("Google Analytics Unavailable");
+    }
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -35,6 +42,13 @@ angular.module('keepup', ['ionic','ionic.service.core', 'keepup.controllers', 'k
 
 
   $stateProvider
+
+    .state('update', {
+        url: '/update',
+        templateUrl: 'templates/tab-dash.html',
+        controller: 'DashCtrl'
+        // controller: 'IntroCtrl'
+    })
 
     .state('intro', {
         url: '/intro',

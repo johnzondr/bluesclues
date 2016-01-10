@@ -230,6 +230,29 @@ module.exports = [
         "clobbers": [
             "IonicDeploy"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+        "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+        "pluginId": "cordova-plugin-google-analytics",
+        "clobbers": [
+            "analytics"
+        ]
+    },
+    {
+        "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+        "id": "ionic-plugin-keyboard.keyboard",
+        "pluginId": "ionic-plugin-keyboard",
+        "clobbers": [
+            "cordova.plugins.Keyboard"
+        ],
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "id": "cordova-plugin-whitelist.whitelist",
+        "pluginId": "cordova-plugin-whitelist",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -239,7 +262,10 @@ module.exports.metadata =
     "cordova-plugin-device": "1.1.0",
     "cordova-plugin-file": "3.0.0",
     "cordova-plugin-file-transfer": "1.4.0",
-    "ionic-plugin-deploy": "0.4.1"
+    "ionic-plugin-deploy": "0.4.1",
+    "cordova-plugin-google-analytics": "0.8.1",
+    "ionic-plugin-keyboard": "1.0.8",
+    "cordova-plugin-whitelist": "1.2.1-dev"
 }
 // BOTTOM OF METADATA
 });

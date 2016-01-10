@@ -35,6 +35,14 @@
                         {
                             "xml": "<feature name=\"IonicDeploy\"><param name=\"ios-package\" onload=\"true\" value=\"IonicDeploy\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"ios-package\" onload=\"true\" value=\"IonicKeyboard\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -65,6 +73,15 @@
             "PACKAGE_NAME": "com.ionicframework.keepup307485"
         },
         "ionic-plugin-deploy": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-google-analytics": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.keepup307485"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.keepup307485"
         }
     },
@@ -300,6 +317,23 @@
             "clobbers": [
                 "IonicDeploy"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-google-analytics/www/analytics.js",
+            "id": "cordova-plugin-google-analytics.UniversalAnalytics",
+            "pluginId": "cordova-plugin-google-analytics",
+            "clobbers": [
+                "analytics"
+            ]
+        },
+        {
+            "file": "plugins/ionic-plugin-keyboard/www/ios/keyboard.js",
+            "id": "ionic-plugin-keyboard.keyboard",
+            "pluginId": "ionic-plugin-keyboard",
+            "clobbers": [
+                "cordova.plugins.Keyboard"
+            ],
+            "runs": true
         }
     ],
     "plugin_metadata": {
@@ -307,6 +341,9 @@
         "cordova-plugin-file": "3.0.0",
         "cordova-plugin-file-transfer": "1.4.0",
         "cordova-plugin-device": "1.1.0",
-        "ionic-plugin-deploy": "0.4.1"
+        "ionic-plugin-deploy": "0.4.1",
+        "cordova-plugin-google-analytics": "0.8.1",
+        "ionic-plugin-keyboard": "1.0.8",
+        "cordova-plugin-whitelist": "1.2.1-dev"
     }
 }
