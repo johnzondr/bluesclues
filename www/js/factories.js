@@ -26,6 +26,36 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
   };
 })
 
+.factory('Update', function($q, $ionicPopup) {
+
+  return  {
+  	confirm: function() {
+
+  		q = $q.defer();
+
+	   var confirmPopup = $ionicPopup.confirm({
+	     title: 'Install Update',
+	     cssClass: 'updatePopup',
+	     template: 'A new update is ready to install. This will take 30 seconds. Install now?',
+
+	   });
+		confirmPopup.then(function(res) {
+		     if(res) {
+		       q.resolve();
+		     } else {
+		       q.reject();
+		     }
+		   });
+
+		return q.promise
+	},
+
+	install: function(){
+		alert('this works');
+	}
+
+  }
+})
 
 .factory('RegisterUser', function($http) {
 	return {

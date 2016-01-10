@@ -1,42 +1,28 @@
 angular.module('keepup.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, $ionicLoading) {
   
-  var deploy = new Ionic.Deploy();
-  $scope.dafq = "hello";
-  
-  // Update app code with new release from Ionic Deploy
-  $scope.doUpdate = function() {
-    deploy.update().then(function(res) {
-      console.log('Ionic Deploy: Update Success! ', res);
-    }, function(err) {
-      console.log('Ionic Deploy: Update error! ', err);
-    }, function(prog) {
-      console.log('Ionic Deploy: Progress... ', prog);
+  $scope.progress = "progress"
+  $scope.show = function() {
+    $ionicLoading.show({
+      template: '<div>Installing... </div><ion-spinner></ion-spinner>'
     });
   };
+  $scope.hide = function(){
+    $ionicLoading.hide();
+  };
 
-  // Check Ionic Deploy for new code
-  $scope.checkForUpdates = function() {
-    console.log('Ionic Deploy: Checking for updates');
-    deploy.check().then(function(hasUpdate) {
-      console.log('Ionic Deploy: Update available: ' + hasUpdate);
-      $scope.hasUpdate = hasUpdate;
-    }, function(err) {
-      console.error('Ionic Deploy: Unable to check for updates', err);
-    });
-  }
 
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localstorage, Update) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
-  //});
+  //}); 
 
   // Form data for the login modal
   $scope.loginData = {};
@@ -68,6 +54,75 @@ angular.module('keepup.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
+
+
+  // kick off the platform web client
+  Ionic.io();
+
+  // this will give you a fresh user or the previously saved 'current user'
+  var user = Ionic.User.current();
+
+  // if the user doesn't have an id, you'll need to give it one.
+  if (!user.id) {
+  
+    // attempt to get token
+    token = $localstorage.get('token');
+  
+    if(typeof token !== undefined) {
+      user.id = token;
+    } else{
+      user.id = Ionic.User.anonymousId();
+    }
+
+    console.log('user id ' + user.id);  
+  }
+
+  //persist the user
+  user.save();
+
+  var deploy = new Ionic.Deploy(); 
+
+   var showConfirm = function() {
+    return Update.confirm().then( function() {
+      $scope.doUpdate();
+    })
+   }
+
+  
+  
+  // Update app code with new release from Ionic Deploy
+  $scope.doUpdate = function() {
+    $scope.progress = "progress"
+    $ionicLoading.show({
+      template: '<div>{{progress}} Installing... </div><ion-spinner></ion-spinner>'
+    });
+    deploy.update().then(function(res) {
+      $ionicLoading.hide();
+      console.log('Ionic Deploy: Update Success! ', res);
+    }, function(err) {
+      $ionicLoading.hide();
+      console.log('Ionic Deploy: Update error! ', err);
+    }, function(prog) {
+      console.log('Ionic Deploy: Progress... ', prog);
+    });
+  };
+
+  // Check Ionic Deploy for new code
+  var checkForUpdates = function() {
+    console.log('Ionic Deploy: Checking for updates');
+    deploy.check().then(function(hasUpdate) {
+      console.log('Ionic Deploy: Update available: ' + hasUpdate);
+      if (hasUpdate) {
+        showConfirm();
+      };
+
+    }, function(err) {
+      console.error('Ionic Deploy: Unable to check for updates', err);
+    });
+  }
+
+  checkForUpdates();
+  
 })
 
 .controller('CoursesCtrl', function($scope, $http, $localstorage, $state) {
@@ -116,7 +171,7 @@ angular.module('keepup.controllers', [])
 })
 
 
-.controller('CourseDayCtrl', function($scope, $stateParams, $cordovaInAppBrowser, courses) {
+.controller('CourseDayCtrl', function($scope, $stateParams, $cordovaInAppBrowser, courses, $ionicPopup, $ionicLoading) {
   $scope.day = $stateParams.day
   console.log(courses)
   $scope.courses = courses
@@ -140,7 +195,7 @@ angular.module('keepup.controllers', [])
 
   $scope.directions = function(location){
     cordova.InAppBrowser.open("http://maps.apple.com/?saddr=Current%20Location&daddr=Everitt Elec & Comp Engr Lab, 61820", '_blank', 'location=yes');
-  }
+  }   
 
 
 })
@@ -149,7 +204,7 @@ angular.module('keepup.controllers', [])
 })
 
 .controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout) {
-  if(typeof analytics !== undefined) { analytics.trackView("Edit Classes"); }
+
   $scope.courses = courses;
   $scope.working = "Looks like you're enrolled in the following:";
 

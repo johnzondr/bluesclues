@@ -37,6 +37,18 @@ ion-content {
 	background-color: $grey;
 }
 
+.updatePopup {
+	background-color: rgba(0,0,0,.4);
+
+	.popup {
+		background-color: rgba(255, 255, 255,1);
+	}
+
+	.button-positive {
+		background-color: $green;
+	}
+}
+
 #main-header-bar {
 	.bar {
 		height: 80px;

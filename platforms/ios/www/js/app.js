@@ -4,9 +4,9 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('keepup', ['ionic','ionic.service.core', 'keepup.controllers', 'keepup.services', 'keepup.factories', 'keepup.directives', 'ngCordova', 'ionic.utils'])
+angular.module('keepup', ['ionic','ionic.service.core', 'ionic.service.analytics', 'keepup.controllers', 'keepup.services', 'keepup.factories', 'keepup.directives', 'ngCordova', 'ionic.utils'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,12 +22,7 @@ angular.module('keepup', ['ionic','ionic.service.core', 'keepup.controllers', 'k
       StatusBar.styleDefault();
     }
 
-
-    if(typeof analytics !== undefined) {
-        analytics.startTrackerWithId("UA-72218613-1");
-    } else {
-        console.log("Google Analytics Unavailable");
-    }
+    $ionicAnalytics.register();
 
   });
 })
