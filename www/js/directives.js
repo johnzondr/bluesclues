@@ -5,7 +5,12 @@ angular.module('keepup.directives', [])
   return {
     restrict: 'E',
     // template: "hello",
-    templateUrl: 'templates/directives/schedule-item.html',
+    templateUrl: function() {
+      if (ionic.Platform.isAndroid()) {
+          return  "templates/directives/schedule-item-android.html";
+      }
+      return "templates/directives/schedule-item.html";
+    },
     scope: {course: '='},
     replace: true
   }

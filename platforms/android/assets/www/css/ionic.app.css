@@ -9740,6 +9740,13 @@ a.button {
 ion-content {
   background-color: #ECF0F1; }
 
+.updatePopup {
+  background-color: rgba(0, 0, 0, 0.4); }
+  .updatePopup .popup {
+    background-color: white; }
+  .updatePopup .button-positive {
+    background-color: #2ECC71; }
+
 #main-header-bar .bar {
   height: 80px; }
   #main-header-bar .bar .title {

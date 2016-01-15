@@ -24,6 +24,7 @@ angular.module('keepup.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //}); 
 
+
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -80,7 +81,8 @@ angular.module('keepup.controllers', [])
   //persist the user
   user.save();
 
-  var deploy = new Ionic.Deploy(); 
+  var deploy = new Ionic.Deploy();
+  deploy.setChannel("dev");
 
    var showConfirm = function() {
     return Update.confirm().then( function() {
@@ -203,7 +205,7 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
-.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout) {
+.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout, $ionicModal) {
 
   $scope.courses = courses;
   $scope.working = "Looks like you're enrolled in the following:";
@@ -255,6 +257,45 @@ angular.module('keepup.controllers', [])
     return time;
   }
 
+  // Form data for the login modal
+  $scope.searchTerms = "hello what";
+
+  // Create the login modal that we will use later
+  $ionicModal.fromTemplateUrl('templates/search-modal.html', {
+    scope: $scope
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+
+  // Triggered in the login modal to close it
+  $scope.closeSearch = function() {
+    $scope.modal.hide();
+  };
+
+  // Open the login modal
+  $scope.openSearch = function() {
+    $scope.modal.show();
+  };
+
+  // Perform the login action when the user submits the login form
+  $scope.doSearch = function() {
+    var searchArray = $scope.searchTerms.split(" ");
+    console.log('Searching terms', searchArray);
+
+    // Simulate a login delay. Remove this and replace with your login
+    // code if using a login system
+  };
+
+  // var search = function() {
+  //   $http.
+    
+  // }
+
+  // $http({
+  //   method:'GET',
+  //   url: ' ',
+  //   params: {'product_ids[]': productIds}  
+  // )
 
   
 })

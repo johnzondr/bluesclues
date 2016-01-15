@@ -1,3 +1,5 @@
+// keepupbackend-staging.herokuapp.com
+// keep-backend.herokuapp.com
 angular.module('keepup.factories', ['ionic', 'ngResource'])
 
 .factory('Schedule', function($http, $localstorage) {
@@ -7,7 +9,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    token = $localstorage.get('token');
 	    return $http({
 	    	method: 'GET',
-	    	url: 'https://keep-backend.herokuapp.com/schedules',
+	    	url: 'https://keepupbackend-staging.herokuapp.com/schedules',
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token, day: day }
 	    	})
@@ -18,7 +20,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    token = $localstorage.get('token');
 	    return $http({
 	    	method: 'DELETE',
-	    	url: 'https://keep-backend.herokuapp.com/schedules/'+course.id,
+	    	url: 'https://keepupbackend-staging.herokuapp.com/schedules/'+course.id,
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token}
 	    	})
@@ -26,6 +28,36 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
   };
 })
 
+.factory('Update', function($q, $ionicPopup) {
+
+  return  {
+  	confirm: function() {
+
+  		q = $q.defer();
+
+	   var confirmPopup = $ionicPopup.confirm({
+	     title: 'Install Update',
+	     cssClass: 'updatePopup',
+	     template: 'A new update is ready to install. This will take 30 seconds. Install now?',
+
+	   });
+		confirmPopup.then(function(res) {
+		     if(res) {
+		       q.resolve();
+		     } else {
+		       q.reject();
+		     }
+		   });
+
+		return q.promise
+	},
+
+	install: function(){
+		alert('this works');
+	}
+
+  }
+})
 
 .factory('RegisterUser', function($http) {
 	return {
@@ -34,7 +66,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 			console.log('attemping to register user')
 			var req = {
 			       method: 'POST',
-			       url: 'https://keep-backend.herokuapp.com/users?uuid='+uuid,
+			       url: 'https://keepupbackend-staging.herokuapp.com/users?uuid='+uuid,
 			       headers: {
 			         'Accept': 'application/vnd.keepup.v1'
 			       },
@@ -104,7 +136,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 
 			var req = {
 				method: 'POST',
-				url: 'https://keep-backend.herokuapp.com/ocr?token='+token+'&task_id='+taskId,
+				url: 'https://keepupbackend-staging.herokuapp.com/ocr?token='+token+'&task_id='+taskId,
 				headers: {
 				 'Accept': 'application/vnd.keepup.v1'
 				}

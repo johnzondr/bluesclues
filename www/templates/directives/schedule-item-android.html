@@ -1,0 +1,21 @@
+<div class="row" id="course-item">
+	<div class="col col-80 info">
+		<div class="row start_time">
+		{{course.start_time.toString().toHHMMSS()}}
+		</div>
+		<div class="row name">
+		{{course.name}} 
+		</div>
+		<div class="row location">
+		{{course.building}}
+		</div>
+		
+	</div>
+	<div class="col navigate">
+		<a ng-href="geo://my%20location?q={{course.building}},61820" data-rel="external">
+			<img ng-src="img/navigate.png">
+		</a>
+	</div>
+</div>
+
+
