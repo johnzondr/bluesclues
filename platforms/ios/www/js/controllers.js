@@ -82,7 +82,7 @@ angular.module('keepup.controllers', [])
   user.save();
 
   var deploy = new Ionic.Deploy();
-  deploy.setChannel("dev");
+  deploy.setChannel("production");
 
    var showConfirm = function() {
     return Update.confirm().then( function() {
