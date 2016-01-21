@@ -24,6 +24,17 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token}
 	    	})
+  	},
+  	add: function(course) {
+
+  		console.log('attemping to enroll user in course ' + course.name)
+	    token = $localstorage.get('token');
+	    return $http({
+	    	method: 'GET',
+	    	url: 'https://keep-backend.herokuapp.com/schedules/new',
+	    	headers: {'Accept': 'application/vnd.keepup.v1'},
+	    	params: {token: token, course_id: course.id}
+	    	})
   	} 
   };
 })

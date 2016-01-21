@@ -17,7 +17,7 @@
     </button> -->
     
 	<ion-list>
-	  <ion-item ng-repeat="course in courses">
+	  <ion-item ng-repeat="course in courses | orderBy:'start_time'">
 	  	<schedule-item course="course"></schedule-item>
 	  </ion-item>
 	</ion-list>

@@ -15,7 +15,7 @@ angular.module('keepup.controllers', [])
 
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localstorage, Update) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localstorage, $ionicLoading, Update) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -205,7 +205,7 @@ angular.module('keepup.controllers', [])
 .controller('CourseCtrl', function($scope, $stateParams) {
 })
 
-.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout, $ionicModal) {
+.controller('EditClassesCtrl', function($scope, courses, Schedule, $localstorage, Ocr, $timeout, $ionicModal, $http, $ionicLoading) {
 
   $scope.courses = courses;
   $scope.working = "Looks like you're enrolled in the following:";
@@ -258,7 +258,7 @@ angular.module('keepup.controllers', [])
   }
 
   // Form data for the login modal
-  $scope.searchTerms = "hello what";
+  $scope.searchTerms = "";
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/search-modal.html', {
@@ -278,24 +278,40 @@ angular.module('keepup.controllers', [])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doSearch = function() {
-    var searchArray = $scope.searchTerms.split(" ");
-    console.log('Searching terms', searchArray);
+  $scope.doSearch = function(input) {
+    console.log(input.split(" "));
+    var searchArray = input.split(" ");
+    console.log('Searching terms', input);
 
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
+    var token = $localstorage.get('token');
+    
+    $http({
+      method:'GET',
+      url: 'https://keep-backend.herokuapp.com/courses/search',
+      params: {'searchTerms[]': searchArray,
+      'token': token}  
+    }
+    ).then(function(response){
+      $scope.searchResults = response.data.courses
+    });
+  };
+  
+  $scope.addCourse = function(course) {
+
+    $ionicLoading.show({
+      template: '<div>Adding class... </div><ion-spinner></ion-spinner>'
+    });
+    console.log(course);
+    $timeout(function(){
+      console.log(course);
+      Schedule.add(course);
+      $ionicLoading.hide();
+      $scope.searchResults.splice($scope.searchResults.indexOf(course),1);  
+    }
+      , 700);
   };
 
-  // var search = function() {
-  //   $http.
-    
-  // }
 
-  // $http({
-  //   method:'GET',
-  //   url: ' ',
-  //   params: {'product_ids[]': productIds}  
-  // )
 
   
 })

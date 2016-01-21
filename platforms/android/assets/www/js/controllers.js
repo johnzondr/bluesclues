@@ -15,7 +15,7 @@ angular.module('keepup.controllers', [])
 
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localstorage, Update) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $localstorage, $ionicLoading, Update) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -82,7 +82,7 @@ angular.module('keepup.controllers', [])
   user.save();
 
   var deploy = new Ionic.Deploy();
-  deploy.setChannel("dev");
+  deploy.setChannel("production");
 
    var showConfirm = function() {
     return Update.confirm().then( function() {

@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar>
-    <form ng-submit="doSearch()" class="bar bar-header item-input-inset">
+    <form ng-submit="doSearch(searchTerms)" class="bar bar-header item-input-inset">
 
     <label class="item-input-wrapper">
       <i class="icon ion-ios-search placeholder-icon"></i>
@@ -14,8 +14,12 @@
   </ion-header-bar>
 
   <ion-content>
-  {{searchTerms}}
 
+  <ion-list>
+    <ion-item ng-repeat="course in searchResults" style="padding:0; margin: 8px 0;">
+      <class-search-item course="course" add-course="addCourse(course)"></class-search-item>
+    </ion-item>
+  </ion-list>
 <!--     <form ng-submit="doLogin()">
       <div class="list">
         <label class="item item-input">
@@ -32,6 +36,9 @@
       </div>
     </form> -->
   </ion-content>
+<ion-footer-bar align-title="center" class="bar-balanced" id="camera-button" ng-click="closeSearch()">
+    <h1 class="title">Done</h1>
+  </ion-footer-bar>
 </ion-modal-view>
 
 

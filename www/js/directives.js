@@ -30,4 +30,19 @@ angular.module('keepup.directives', [])
     replace: true
   }
 })
+
+.directive('classSearchItem', function() {
+  return {
+    restrict: 'E',
+    transclude: 'true',
+    // template: "hello",
+    templateUrl: 'templates/directives/class-search-item.html',
+    scope: {
+      course: '=',
+      addCourse:'&'
+    },
+    replace: true
+  }
+})
+;
 ;

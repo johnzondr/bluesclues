@@ -1,0 +1,26 @@
+<div class="row" id="class-search-item" >
+	<div class="col col-80 info" >
+		<div class="row start_time">
+		{{course.department}} {{course.course_number}} - CRN: {{course.course_registration_number}} 
+		</div>
+		<div class="row name">
+		{{course.name}} 
+		</div>
+		<div class="row location">
+
+		<span ng-show="course.monday">M</span>
+		<span ng-show="course.tuesday">T</span>
+		<span ng-show="course.wednesday">W</span>
+		<span ng-show="course.thursday">R</span>
+		<span ng-show="course.friday">F</span>
+<!-- {{course.tuesday}} -->
+		&nbsp; {{course.start_time.toString().toHHMMSS()}}
+		</div>
+		
+	</div>
+	<div class="col navigate" ng-click="addCourse({course:course})">
+	
+		<img ng-src="img/add.png">
+		
+	</div>
+</div>

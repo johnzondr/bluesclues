@@ -9817,19 +9817,19 @@ ion-content {
     color: #95A5A6;
     font-size: 20px; }
 
-#course-item, #class-edit-item {
+#course-item, #class-edit-item, #class-search-item {
   padding: 0; }
-  #course-item .info .start_time, #class-edit-item .info .start_time, #course-item .info .location, #class-edit-item .info .location {
+  #course-item .info .start_time, #class-edit-item .info .start_time, #class-search-item .info .start_time, #course-item .info .location, #class-edit-item .info .location, #class-search-item .info .location {
     font-size: 14px;
     color: #95A5A6; }
-  #course-item .info .name, #class-edit-item .info .name {
+  #course-item .info .name, #class-edit-item .info .name, #class-search-item .info .name {
     letter-spacing: -0.2px;
     font-size: 18px;
     font-weight: 600;
     margin: 0px 0; }
-  #course-item .info .location, #class-edit-item .info .location {
+  #course-item .info .location, #class-edit-item .info .location, #class-search-item .info .location {
     margin-top: 3px; }
-  #course-item .navigate, #class-edit-item .navigate {
+  #course-item .navigate, #class-edit-item .navigate, #class-search-item .navigate {
     border-left: 1px solid #ECF0F1;
     padding-top: 30px;
     text-align: center; }

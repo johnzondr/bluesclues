@@ -9,7 +9,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    token = $localstorage.get('token');
 	    return $http({
 	    	method: 'GET',
-	    	url: 'https://keepupbackend-staging.herokuapp.com/schedules',
+	    	url: 'https://keep-backend.herokuapp.com/schedules',
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token, day: day }
 	    	})
@@ -20,7 +20,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 	    token = $localstorage.get('token');
 	    return $http({
 	    	method: 'DELETE',
-	    	url: 'https://keepupbackend-staging.herokuapp.com/schedules/'+course.id,
+	    	url: 'https://keep-backend.herokuapp.com/schedules/'+course.id,
 	    	headers: {'Accept': 'application/vnd.keepup.v1'},
 	    	params: {token: token}
 	    	})
@@ -66,7 +66,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 			console.log('attemping to register user')
 			var req = {
 			       method: 'POST',
-			       url: 'https://keepupbackend-staging.herokuapp.com/users?uuid='+uuid,
+			       url: 'https://keep-backend.herokuapp.com/users?uuid='+uuid,
 			       headers: {
 			         'Accept': 'application/vnd.keepup.v1'
 			       },
@@ -136,7 +136,7 @@ angular.module('keepup.factories', ['ionic', 'ngResource'])
 
 			var req = {
 				method: 'POST',
-				url: 'https://keepupbackend-staging.herokuapp.com/ocr?token='+token+'&task_id='+taskId,
+				url: 'https://keep-backend.herokuapp.com/ocr?token='+token+'&task_id='+taskId,
 				headers: {
 				 'Accept': 'application/vnd.keepup.v1'
 				}
